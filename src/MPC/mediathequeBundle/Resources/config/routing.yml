@@ -1,0 +1,3 @@
+mp_cmediatheque_homepage:
+    path:     /
+    defaults: { _controller: MPCmediathequeBundle:Default:index }

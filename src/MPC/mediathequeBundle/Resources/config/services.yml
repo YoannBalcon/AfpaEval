@@ -1,0 +1,4 @@
+services:
+#    mp_cmediatheque.example:
+#        class: MPC\mediathequeBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
