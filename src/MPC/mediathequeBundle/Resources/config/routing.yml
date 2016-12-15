@@ -4,7 +4,7 @@ mp_cmediatheque_auteurs:
     
 mp_cmediatheque_ouvrage:
     resource: "@MPCmediathequeBundle/Resources/config/routing/ouvrage.xml"
-    prefix:   /ouvrage
+    prefix:   /catalogue
 
 mp_cmediatheque_homepage:
     path:     /

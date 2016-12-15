@@ -10,6 +10,7 @@
 
 }
 #homeNavBar {
+    font-family: Verdana;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -17,8 +18,8 @@
     background-color: #111;
 }
 
-
 li {
+    float: left;
     border-right: 1px solid #bbb;
     display: inline-block;
 
@@ -28,11 +29,7 @@ li {
     border-left: 1px solid #bbb;
 }
 
-.logButtons:hover{
-    background-color: lightblue;
-}
-
-li a {
+.itemNavbar{
     display: block;
     color: #FFB700;
     text-align: center;
@@ -40,7 +37,13 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
-    color : white;
-    background-color: #868B94;
+.itemNavbar:hover {
+    color : black;
+    background-color: #FFB700;
+}
+
+#editCatalogue{
+    text-decoration: none;
+    float: none;
+    border-right: none;
 }

@@ -19,10 +19,10 @@ class OuvrageController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        
         $ouvrages = $em->getRepository('MPCmediathequeBundle:Ouvrage')->findAll();
 
-        return $this->render('ouvrage/index.html.twig', array(
+        return $this->render('ouvrage/catalogue.html.twig', array(
             'ouvrages' => $ouvrages,
         ));
     }

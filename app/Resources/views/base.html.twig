@@ -5,7 +5,7 @@
         <title>{% block title %}Pleyber-Christ{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
 </head>
 <body>
     {% block navbar %}
@@ -14,14 +14,15 @@
 
         <div>
             <ul id ="homeNavBar">
-                <li><a href="#">Cadre de vie</a></li>
-                <li><a href="#">Vie municipale</a></li>
-                <li><a href="#">Vie locale et sociale</a></li>
-                <li><a href="#">Vie associative et culturelle</a></li>
-                <li><a href="#">Liens</a></li>
-                <li><a href="#">Economie</a></li>
-                <li class="logButtons"><a href="#">Se connecter</a></li>
-                <li class="logButtons"><a href="#">S'inscrire</a></li>               
+                <li><a class="itemNavbar" href="#">Cadre de vie</a></li>
+                <li><a class="itemNavbar" href="#">Vie municipale</a></li>
+                <li><a class="itemNavbar" href="#">Vie locale et sociale</a></li>
+                <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
+                <li><a class="itemNavbar" href="#">Liens</a></li>
+                <li><a class="itemNavbar" href="#">Economie</a></li>
+                <li class="logButtons"><a class="itemNavbar" href="/catalogue">Consulter le catalogue</a></li>
+                <li class="logButtons"><a class="itemNavbar" href="#">Se connecter</a></li>
+                <li class="logButtons"><a class="itemNavbar" href="#">S'inscrire</a></li>               
             </ul>
         </div>
     {% endblock %}
