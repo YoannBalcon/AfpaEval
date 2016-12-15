@@ -2,12 +2,39 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+        <title>{% block title %}Pleyber-Christ{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="css/style.css" media="screen">
+</head>
+<body>
+    {% block navbar %}
+        <div id="logo"><a href="http://www.pleyber-christ.fr"><img src="http://www.pleyber-christ.fr/medias/images/www/structure/contenu_logo_pleyber.gif" alt="Pleyber-Christ  - Logo"/></a> 
+        </div>
+
+        <div>
+            <ul id ="homeNavBar">
+                <li><a href="#">Cadre de vie</a></li>
+                <li><a href="#">Vie municipale</a></li>
+                <li><a href="#">Vie locale et sociale</a></li>
+                <li><a href="#">Vie associative et culturelle</a></li>
+                <li><a href="#">Liens</a></li>
+                <li><a href="#">Economie</a></li>
+                <li class="logButtons"><a href="#">Se connecter</a></li>
+                <li class="logButtons"><a href="#">S'inscrire</a></li>               
+            </ul>
+        </div>
+    {% endblock %}
+    
+    {% block body %}{% endblock %}
+    
+    
+    {% block footer %}
+        
+        <div id ="footer">Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a></div>   
+    
+    {% endblock %}
+    
+{% block javascripts %}{% endblock %}
+</body>
 </html>

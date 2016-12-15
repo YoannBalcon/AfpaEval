@@ -9,3 +9,6 @@ app:
 HomeMpc:
     path:    /home
     defaults: { _controller: MPCmediathequeBundle:Advert:index}
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

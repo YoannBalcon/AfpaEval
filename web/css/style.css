@@ -1,0 +1,46 @@
+#logo{
+    text-align: center;
+}
+
+#footer{
+    text-align: center;
+    display: block;
+    color : white;
+    background-color: #868B94;
+
+}
+#homeNavBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111;
+}
+
+
+li {
+    border-right: 1px solid #bbb;
+    display: inline-block;
+
+}
+.logButtons{
+    float: right;   
+    border-left: 1px solid #bbb;
+}
+
+.logButtons:hover{
+    background-color: lightblue;
+}
+
+li a {
+    display: block;
+    color: #FFB700;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    color : white;
+    background-color: #868B94;
+}
