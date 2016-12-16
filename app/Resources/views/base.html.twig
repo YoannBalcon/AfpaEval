@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
         <meta charset="UTF-8" />
         <title>{% block title %}Pleyber-Christ{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
@@ -21,21 +22,65 @@
                 <li><a class="itemNavbar" href="#">Liens</a></li>
                 <li><a class="itemNavbar" href="#">Economie</a></li>
                 <li class="logButtons"><a class="itemNavbar" href="/catalogue">Consulter le catalogue</a></li>
-                <li class="logButtons"><a class="itemNavbar" href="#">Se connecter</a></li>
-                <li class="logButtons"><a class="itemNavbar" href="#">S'inscrire</a></li>               
             </ul>
         </div>
     {% endblock %}
-    
-    {% block body %}{% endblock %}
-    
-    
-    {% block footer %}
+
+    {% block contact %}
+        <div>
+            <ul id="blockContact">
+                <li><a class="itemContact" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
+                <li><a class="itemContact" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
+                <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
+        </div>
+    {% endblock %}
+    {% block calendar %}
         
-        <div id ="footer">Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a></div>   
+    <div id="blockHoraires">
+        <h3>Horaires d'ouverture</h3>
+        <table>    
+            <tr>
+                <td>lundi</td>
+                <td>Fermé</td>
+            </tr>
+            <tr>
+                <td>mardi</td>
+                <td>15:00–19:00</td>
+            </tr>
+            <tr>
+                <td>mercredi</td>
+                <td>10:00–18:00</td>
+            </tr>
+            <tr>
+                <td>jeudi</td>
+                <td>Fermé</td>
+            </tr>
+            <tr>
+                <td>vendredi</td>
+                <td>15:00–19:00</td>
+            </tr>
+            <tr>
+                <td>samedi</td>
+                <td>10:00–17:00</td>
+            </tr>
+            <tr>
+                <td>dimanche</td>
+                <td>Fermé</td>
+            </tr>
+        </table>
+    </div>
     
     {% endblock %}
-    
+
+{% block body %}{% endblock %}
+
+
+{% block footer %}
+    <footer>
+        <div id ="footer">Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a></div>   
+    </footer>
+{% endblock %}
+
 {% block javascripts %}{% endblock %}
 </body>
 </html>

@@ -1,14 +1,27 @@
+
+body {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+
+
+}
+
 #logo{
     text-align: center;
 }
 
 #footer{
+    position: absolute; bottom: 0; left: 0; right: 0;
     text-align: center;
     display: block;
     color : white;
     background-color: #868B94;
 
 }
+
+/****NAVBAR****/
 #homeNavBar {
     font-family: Verdana;
     list-style-type: none;
@@ -18,7 +31,7 @@
     background-color: #111;
 }
 
-li {
+.itemNavbar {
     float: left;
     border-right: 1px solid #bbb;
     display: inline-block;
@@ -42,8 +55,42 @@ li {
     background-color: #FFB700;
 }
 
-#editCatalogue{
+
+/***Bloc Contact*****/
+
+#blockContact {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+.itemContact {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
     text-decoration: none;
-    float: none;
-    border-right: none;
+}
+
+.itemContact:hover {
+    background-color: #555;
+    color: #FFB700;
+}
+
+#editCatalogue{
+        text-decoration: none;
+        float: none;
+        border-right: none;
+    }
+    
+    /***bloc Horaires****/
+    
+    #blockHoraires {    
+    float: right;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
 }
