@@ -7,39 +7,40 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Utilisateurs
+ *
+ * @ORM\Table(name="utilisateurs")
+ * @ORM\Entity
  */
-class Utilisateurs extends BaseUser {
+class Utilisateurs extends BaseUser
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=250, nullable=true)
+     */
+    private $nom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=250, nullable=true)
+     */
+    private $prenom;
+
+ /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        /**
-         * @var string
-         */
+        // your own logic
     }
 
-    private $nom;
 
-    /**
-     * @var string
-     */
-    private $prenom;
-
-    /**
-     * @var \MPC\mediathequeBundle\Entity\Reservation
-     */
-    private $reservation;
-
-    /**
-     * @var \MPC\mediathequeBundle\Entity\Emprunt
-     */
-    private $emprunt;
 
     /**
      * Set nom
@@ -48,7 +49,8 @@ class Utilisateurs extends BaseUser {
      *
      * @return Utilisateurs
      */
-    public function setNom($nom) {
+    public function setNom($nom)
+    {
         $this->nom = $nom;
 
         return $this;
@@ -59,7 +61,8 @@ class Utilisateurs extends BaseUser {
      *
      * @return string
      */
-    public function getNom() {
+    public function getNom()
+    {
         return $this->nom;
     }
 
@@ -70,7 +73,8 @@ class Utilisateurs extends BaseUser {
      *
      * @return Utilisateurs
      */
-    public function setPrenom($prenom) {
+    public function setPrenom($prenom)
+    {
         $this->prenom = $prenom;
 
         return $this;
@@ -81,7 +85,8 @@ class Utilisateurs extends BaseUser {
      *
      * @return string
      */
-    public function getPrenom() {
+    public function getPrenom()
+    {
         return $this->prenom;
     }
 
@@ -90,52 +95,8 @@ class Utilisateurs extends BaseUser {
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
-
-    /**
-     * Set reservation
-     *
-     * @param \MPC\mediathequeBundle\Entity\Reservation $reservation
-     *
-     * @return Utilisateurs
-     */
-    public function setReservation(\MPC\mediathequeBundle\Entity\Reservation $reservation = null) {
-        $this->reservation = $reservation;
-
-        return $this;
-    }
-
-    /**
-     * Get reservation
-     *
-     * @return \MPC\mediathequeBundle\Entity\Reservation
-     */
-    public function getReservation() {
-        return $this->reservation;
-    }
-
-    /**
-     * Set emprunt
-     *
-     * @param \MPC\mediathequeBundle\Entity\Emprunt $emprunt
-     *
-     * @return Utilisateurs
-     */
-    public function setEmprunt(\MPC\mediathequeBundle\Entity\Emprunt $emprunt = null) {
-        $this->emprunt = $emprunt;
-
-        return $this;
-    }
-
-    /**
-     * Get emprunt
-     *
-     * @return \MPC\mediathequeBundle\Entity\Emprunt
-     */
-    public function getEmprunt() {
-        return $this->emprunt;
-    }
-
 }

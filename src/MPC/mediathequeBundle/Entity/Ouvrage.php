@@ -2,40 +2,73 @@
 
 namespace MPC\mediathequeBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Ouvrage
+ *
+ * @ORM\Table(name="ouvrage", indexes={@ORM\Index(name="auteur_id", columns={"auteur_id"}), @ORM\Index(name="genre_id", columns={"genre_id"})})
+ * @ORM\Entity
  */
 class Ouvrage
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=250, nullable=false)
      */
     private $titre;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="annee", type="integer", nullable=false)
      */
     private $annee;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=false)
+     */
+    private $photo;
+
+    /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
+     * @var \MPC\mediathequeBundle\Entity\Genre
+     *
+     * @ORM\ManyToOne(targetEntity="MPC\mediathequeBundle\Entity\Genre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="genre_id", referencedColumnName="id")
+     * })
+     */
+    private $genre;
+
+    /**
      * @var \MPC\mediathequeBundle\Entity\Auteurs
+     *
+     * @ORM\ManyToOne(targetEntity="MPC\mediathequeBundle\Entity\Auteurs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="auteur_id", referencedColumnName="id")
+     * })
      */
     private $auteur;
 
-    /**
-     * @var \MPC\mediathequeBundle\Entity\Genre
-     */
-    private $genre;
 
 
     /**
@@ -111,6 +144,30 @@ class Ouvrage
     }
 
     /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Ouvrage
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -118,30 +175,6 @@ class Ouvrage
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set auteur
-     *
-     * @param \MPC\mediathequeBundle\Entity\Auteurs $auteur
-     *
-     * @return Ouvrage
-     */
-    public function setAuteur(\MPC\mediathequeBundle\Entity\Auteurs $auteur = null)
-    {
-        $this->auteur = $auteur;
-
-        return $this;
-    }
-
-    /**
-     * Get auteur
-     *
-     * @return \MPC\mediathequeBundle\Entity\Auteurs
-     */
-    public function getAuteur()
-    {
-        return $this->auteur;
     }
 
     /**
@@ -167,5 +200,28 @@ class Ouvrage
     {
         return $this->genre;
     }
-}
 
+    /**
+     * Set auteur
+     *
+     * @param \MPC\mediathequeBundle\Entity\Auteurs $auteur
+     *
+     * @return Ouvrage
+     */
+    public function setAuteur(\MPC\mediathequeBundle\Entity\Auteurs $auteur = null)
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return \MPC\mediathequeBundle\Entity\Auteurs
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+}

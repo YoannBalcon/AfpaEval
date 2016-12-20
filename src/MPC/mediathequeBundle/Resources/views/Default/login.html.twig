@@ -1,0 +1,9 @@
+
+
+<form class="form-inline text-right" action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <label for="username"><input type="text" class="form-control" id="username" name="_username" placeholder="Utilisateur" required="required"></label>
+    <label for="password"><input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required="required"></label>
+    <label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" value="on" hidden></label>
+    <button type="submit" id="_submit" name="_submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</button>
+</form>

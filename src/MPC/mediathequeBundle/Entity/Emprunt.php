@@ -2,30 +2,59 @@
 
 namespace MPC\mediathequeBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Emprunt
+ *
+ * @ORM\Table(name="emprunt", indexes={@ORM\Index(name="ouvrage_id", columns={"ouvrage_id"}), @ORM\Index(name="utilisateur_id", columns={"utilisateur_id"})})
+ * @ORM\Entity
  */
 class Emprunt
 {
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="date_retour", type="date", nullable=false)
      */
     private $dateRetour;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="date_emprunt", type="date", nullable=false)
      */
     private $dateEmprunt;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var \MPC\mediathequeBundle\Entity\Ouvrage
+     *
+     * @ORM\ManyToOne(targetEntity="MPC\mediathequeBundle\Entity\Ouvrage")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ouvrage_id", referencedColumnName="id")
+     * })
      */
     private $ouvrage;
+
+    /**
+     * @var \MPC\mediathequeBundle\Entity\Utilisateurs
+     *
+     * @ORM\ManyToOne(targetEntity="MPC\mediathequeBundle\Entity\Utilisateurs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
+     * })
+     */
+    private $utilisateur;
+
 
 
     /**
@@ -109,5 +138,28 @@ class Emprunt
     {
         return $this->ouvrage;
     }
-}
 
+    /**
+     * Set utilisateur
+     *
+     * @param \MPC\mediathequeBundle\Entity\Utilisateurs $utilisateur
+     *
+     * @return Emprunt
+     */
+    public function setUtilisateur(\MPC\mediathequeBundle\Entity\Utilisateurs $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \MPC\mediathequeBundle\Entity\Utilisateurs
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+}

@@ -8,79 +8,91 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="../css/style.css" media="screen">
 </head>
-<body>
-    {% block navbar %}
-        <div id="logo"><a href="http://www.pleyber-christ.fr"><img src="http://www.pleyber-christ.fr/medias/images/www/structure/contenu_logo_pleyber.gif" alt="Pleyber-Christ  - Logo"/></a> 
-        </div>
 
-        <div>
-            <ul id ="homeNavBar">
-                <li><a class="itemNavbar" href="#">Cadre de vie</a></li>
-                <li><a class="itemNavbar" href="#">Vie municipale</a></li>
-                <li><a class="itemNavbar" href="#">Vie locale et sociale</a></li>
-                <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
-                <li><a class="itemNavbar" href="#">Liens</a></li>
-                <li><a class="itemNavbar" href="#">Economie</a></li>
-                <li class="logButtons"><a class="itemNavbar" href="/catalogue">Consulter le catalogue</a></li>
-            </ul>
-        </div>
-    {% endblock %}
-
-    {% block contact %}
-        <div>
-            <ul id="blockContact">
-                <li><a class="itemContact" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
-                <li><a class="itemContact" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
-                <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
-        </div>
-    {% endblock %}
-    {% block calendar %}
-        
-    <div id="blockHoraires">
-        <h3>Horaires d'ouverture</h3>
-        <table>    
-            <tr>
-                <td>lundi</td>
-                <td>Fermé</td>
-            </tr>
-            <tr>
-                <td>mardi</td>
-                <td>15:00–19:00</td>
-            </tr>
-            <tr>
-                <td>mercredi</td>
-                <td>10:00–18:00</td>
-            </tr>
-            <tr>
-                <td>jeudi</td>
-                <td>Fermé</td>
-            </tr>
-            <tr>
-                <td>vendredi</td>
-                <td>15:00–19:00</td>
-            </tr>
-            <tr>
-                <td>samedi</td>
-                <td>10:00–17:00</td>
-            </tr>
-            <tr>
-                <td>dimanche</td>
-                <td>Fermé</td>
-            </tr>
-        </table>
+{% block navbar %}
+    <div id="logo"><a href="http://www.pleyber-christ.fr"><img src="http://www.pleyber-christ.fr/medias/images/www/structure/contenu_logo_pleyber.gif" alt="Pleyber-Christ  - Logo"/></a> 
     </div>
-    
-    {% endblock %}
+
+    <div>
+        <ul id ="homeNavBar">
+            <li><a class="itemNavbar" href="#">Cadre de vie</a></li>
+            <li><a class="itemNavbar" href="#">Vie municipale</a></li>
+            <li><a class="itemNavbar" href="#">Vie locale et sociale</a></li>
+            <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
+            <li><a class="itemNavbar" href="#">Liens</a></li>
+            <li><a class="itemNavbar" href="#">Economie</a></li>
+            <li class="logButtons"><a class="itemNavbar" href="{{ path ('mp_cmediatheque_catalogue') }}">Consulter le catalogue</a></li>
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li class="logButtons"><a class="itemNavbar" href="#">Bonjour</a></li>
+                {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block rightBlock %}
+    <div id="flexBig">
+        <div id="rightBlock">
+            <div>
+                <ul id="blockContact">
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
+                            {% else %}
+                        <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
+                        {%  endif %}
+                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
+                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
+            </div>
+
+            <div id="blockHours">
+                <h3>Horaires d'ouverture</h3>
+                <table>    
+                    <tr>
+                        <td>lundi</td>
+                        <td>Fermé</td>
+                    </tr>
+                    <tr>
+                        <td>mardi</td>
+                        <td>15:00–19:00</td>
+                    </tr>
+                    <tr>
+                        <td>mercredi</td>
+                        <td>10:00–18:00</td>
+                    </tr>
+                    <tr>
+                        <td>jeudi</td>
+                        <td>15:00–19:00</td>
+                    </tr>
+                    <tr>
+                        <td>vendredi</td>
+                        <td>15:00–19:00</td>
+                    </tr>
+                    <tr>
+                        <td>samedi</td>
+                        <td>10:00–17:00</td>
+                    </tr>
+                    <tr>
+                        <td>dimanche</td>
+                        <td>Fermé</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
 
 {% block body %}{% endblock %}
 
 
 {% block footer %}
     <footer>
-        <div id ="footer">Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a></div>   
+        <div id ="footer">Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a>
+        </div>   
     </footer>
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
-</body>
+
 </html>

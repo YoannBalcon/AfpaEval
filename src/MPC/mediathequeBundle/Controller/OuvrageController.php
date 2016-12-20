@@ -20,9 +20,9 @@ class OuvrageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $ouvrages = $em->getRepository('MPCmediathequeBundle:Ouvrage')->findAll();
+        $ouvrages = $em->getRepository('MPCmediathequeBundle:Ouvrage')->findBy ([], ['date' => 'DESC']);
 
-        return $this->render('ouvrage/catalogue.html.twig', array(
+        return $this->render('MPC/mediathequeBundle/Default/catalogue.html.twig', array(
             'ouvrages' => $ouvrages,
         ));
     }

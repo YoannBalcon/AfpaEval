@@ -6,8 +6,9 @@
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/web/css/style.css</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Controller/OuvrageController.php</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/app/Resources/views/ouvrage/catalogue.html.twig</file>
-            <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/app/Resources/views/base.html.twig</file>
+            <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Resources/views/Default/index.html.twig</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Entity/Ouvrage.php</file>
+            <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/app/Resources/views/base.html.twig</file>
         </group>
     </open-files>
 </project-private>

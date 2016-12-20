@@ -4,22 +4,12 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-
-
 }
 
 #logo{
     text-align: center;
 }
 
-#footer{
-    position: absolute; bottom: 0; left: 0; right: 0;
-    text-align: center;
-    display: block;
-    color : white;
-    background-color: #868B94;
-
-}
 
 /****NAVBAR****/
 #homeNavBar {
@@ -28,7 +18,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #111;
+    background-color: #443F3F;
 }
 
 .itemNavbar {
@@ -56,10 +46,24 @@ body {
 }
 
 
-/***Bloc Contact*****/
+/***Bloc de Droite***/
+
+#flexBig{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+#rightBlock
+{
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/***Bloc Contact***/
 
 #blockContact {
-    float: right;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -80,17 +84,46 @@ body {
 }
 
 #editCatalogue{
-        text-decoration: none;
-        float: none;
-        border-right: none;
-    }
-    
-    /***bloc Horaires****/
-    
-    #blockHoraires {    
-    float: right;
+    text-decoration: none;
+    float: none;
+    border-right: none;
+}
+
+/***bloc Horaires****/
+
+#blockHours {    
     margin: 0;
     padding: 0;
     width: 200px;
     background-color: #f1f1f1;
+}
+
+/***Bloc Prochains Evénements***/
+
+#nextEvents{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 300%;
+    background-color: lightblue;
+}
+
+
+/***Bloc Tous les Evénements***/
+
+#listEvents{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 200%;
+    background-color: lightcoral;
+}
+
+
+
+#footer{
+    position: absolute; bottom: 0; left: 0; right: 0;
+    text-align: center;
+    display: block;
+    color : white;
+    background-color: #868B94;
+
 }

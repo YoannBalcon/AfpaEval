@@ -2,25 +2,39 @@
 
 namespace MPC\mediathequeBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Auteurs
+ *
+ * @ORM\Table(name="auteurs")
+ * @ORM\Entity
  */
 class Auteurs
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=250, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=250, nullable=false)
      */
     private $prenom;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
 
 
     /**
@@ -80,8 +94,4 @@ class Auteurs
     {
         return $this->id;
     }
-    public function __toString() {
-        return $this->nom;
-    }
 }
-

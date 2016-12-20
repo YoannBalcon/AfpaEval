@@ -13,18 +13,18 @@
             <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
             <li><a class="itemNavbar" href="#">Liens</a></li>
             <li><a class="itemNavbar" href="#">Economie</a></li>
-            <li class="logButtons"><a class="itemNavbar" href="../">Revenir à l'accueil</a></li>
-            <li class="logButtons"><a class="itemNavbar" href="#">Se connecter</a></li>
-            <li class="logButtons"><a class="itemNavbar" href="#">S'inscrire</a></li>               
+            <li class="logButtons"><a class="itemNavbar" href="../">Revenir à l'accueil</a></li>             
         </ul>
     </div>
 {% endblock %}
+
 {% block body %}
     <h1>Catalogue</h1>
 
     <table>
         <thead>
             <tr>
+                <th>Aperçu</th>
                 <th>Titre</th>
                 <th>Auteur</th>
                 <th>Annee</th>
@@ -35,17 +35,20 @@
         <tbody>
             {% for ouvrage in ouvrages %}
                 <tr>
-                    <td><a href="{{ path('ouvrage_show', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></td>
+                    <td><img class="photoTitre" src="{{ ouvrage.photo }}"height = "190" width ="150"</td>
+                    <td><a href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></td>
                     <td>{{ouvrage.auteur.prenom}} {{ouvrage.auteur.nom}} </td>
                     <td>{{ ouvrage.annee }} </td>
                     <td>{{ ouvrage.genre.nom }} </td>
                     <td>{% if ouvrage.date %}{{ ouvrage.date|date('Y-m-d') }}{% endif %} </td>
                     <td>
-                        <ul>                    
-                            <li id="editCatalogue">
-                                <a href="{{ path('ouvrage_edit', { 'id': ouvrage.id }) }}">éditer</a>
-                            </li>
-                        </ul>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <ul> 
+                                <li id="editCatalogue">
+                                    <a href="#">éditer</a>
+                                </li>
+                            </ul>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
@@ -55,7 +58,7 @@
     <div>
         <ul>
             <li id="editCatalogue">
-                <a href="{{ path('ouvrage_new') }}">Ajouter un ouvrage au catalogue</a>
+                <a href="#">Ajouter un ouvrage au catalogue</a>
             </li>
         </ul>
     </div>

@@ -2,10 +2,20 @@ mp_cmediatheque_auteurs:
     resource: "@MPCmediathequeBundle/Resources/config/routing/auteurs.xml"
     prefix:   /auteurs
     
-mp_cmediatheque_ouvrage:
-    resource: "@MPCmediathequeBundle/Resources/config/routing/ouvrage.xml"
-    prefix:   /catalogue
-
 mp_cmediatheque_homepage:
     path:     /
     defaults: { _controller: MPCmediathequeBundle:Default:index }
+    
+mp_cmediatheque_login:
+    path:     /login
+    defaults: { _controller: MPCmediathequeBundle:Default:login }
+
+mp_cmediatheque_register:
+    path:     /register
+    defaults: { _controller: MPCmediathequeBundle:Default:register }
+    
+mp_cmediatheque_catalogue:
+    path:    /catalogue/
+    defaults: { _controller: MPCmediathequeBundle:Default:catalogue }
+    
+

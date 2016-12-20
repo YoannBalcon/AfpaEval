@@ -1,0 +1,40 @@
+<?php
+
+namespace MPC\mediathequeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Utilisateurs
+ *
+ * @ORM\Table(name="utilisateurs")
+ * @ORM\Entity
+ */
+class Utilisateurs
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=250, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=250, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+
