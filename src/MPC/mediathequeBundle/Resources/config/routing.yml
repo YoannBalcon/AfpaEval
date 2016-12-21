@@ -18,4 +18,30 @@ mp_cmediatheque_catalogue:
     path:    /catalogue/
     defaults: { _controller: MPCmediathequeBundle:Default:catalogue }
     
+mpc_reservation:
+    path:    /reservation
+    defaults: { _controller: MPCmediathequeBundle:Default:reservation }
 
+mpc_listeReservations:
+    path:    /listResa
+    defaults: { _controller: MPCmediathequeBundle:Default:listeResa }
+
+mpc_userListeReservations:
+    path:    /userListResa
+    defaults: { _controller: MPCmediathequeBundle:Default:userListResa }
+
+mpc_emprunt:
+    path:    /emprunt
+    defaults: { _controller: MPCmediathequeBundle:Default:emprunt }
+
+mpc_listeEmprunt:
+    path:    /listEmprunt
+    defaults: { _controller: MPCmediathequeBundle:Default:listeEmprunt }
+
+mpc_userListEmprunt:
+    path:    /userListEmprunt
+    defaults: { _controller: MPCmediathequeBundle:Default:userListEmprunt }
+
+mpc_phantom:
+    path:    /phantom
+    defaults: { _controller: MPCmediathequeBundle:Default:phantom }

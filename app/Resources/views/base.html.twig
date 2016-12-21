@@ -30,60 +30,60 @@
     </div>
 {% endblock %}
 
-{% block rightBlock %}
-    <div id="flexBig">
-        <div id="rightBlock">
-            <div>
-                <ul id="blockContact">
+<div id="flexBig">
+    <div id="leftBlock">
+        {% block body %}
+        {% endblock %}
+    </div>
+    <div id="rightBlock">
+        <div>
+            <ul id="blockContact">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"> Mes réservations</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"> Mes emprunts</a></li>
+                    {% else %}
+                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
+                <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
+                    {%  endif %}
+                <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
+        </div>
 
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
-                            {% else %}
-                        <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
-                        {%  endif %}
-                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
-                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
-            </div>
-
-            <div id="blockHours">
-                <h3>Horaires d'ouverture</h3>
-                <table>    
-                    <tr>
-                        <td>lundi</td>
-                        <td>Fermé</td>
-                    </tr>
-                    <tr>
-                        <td>mardi</td>
-                        <td>15:00–19:00</td>
-                    </tr>
-                    <tr>
-                        <td>mercredi</td>
-                        <td>10:00–18:00</td>
-                    </tr>
-                    <tr>
-                        <td>jeudi</td>
-                        <td>15:00–19:00</td>
-                    </tr>
-                    <tr>
-                        <td>vendredi</td>
-                        <td>15:00–19:00</td>
-                    </tr>
-                    <tr>
-                        <td>samedi</td>
-                        <td>10:00–17:00</td>
-                    </tr>
-                    <tr>
-                        <td>dimanche</td>
-                        <td>Fermé</td>
-                    </tr>
-                </table>
-            </div>
+        <div id="blockHours">
+            <h3>Horaires d'ouverture</h3>
+            <table>    
+                <tr>
+                    <td>lundi</td>
+                    <td>Fermé</td>
+                </tr>
+                <tr>
+                    <td>mardi</td>
+                    <td>15:00–19:00</td>
+                </tr>
+                <tr>
+                    <td>mercredi</td>
+                    <td>10:00–18:00</td>
+                </tr>
+                <tr>
+                    <td>jeudi</td>
+                    <td>15:00–19:00</td>
+                </tr>
+                <tr>
+                    <td>vendredi</td>
+                    <td>15:00–19:00</td>
+                </tr>
+                <tr>
+                    <td>samedi</td>
+                    <td>10:00–17:00</td>
+                </tr>
+                <tr>
+                    <td>dimanche</td>
+                    <td>Fermé</td>
+                </tr>
+            </table>
         </div>
     </div>
-
-{% endblock %}
-
-{% block body %}{% endblock %}
+</div>
 
 
 {% block footer %}

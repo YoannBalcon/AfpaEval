@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Liste des Emprunts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Document</th>
+                <th> Utilisateur</th>
+                <th> Date d'emprunt</th>
+            </tr>
+        </thead> 
+        <tbody>
+            {% for emprunt in emprunts %}
+                <tr>
+                    <td>{{ emprunt.ouvrage.titre }}</td>
+                    <td>{{ emprunt.utilisateur.username }}</td>
+                    <td>{{ emprunt.dateRetour|date("m/d/Y") }}</td>
+                {% endfor %}
+            {% endblock %}

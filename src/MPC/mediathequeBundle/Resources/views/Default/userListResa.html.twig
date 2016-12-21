@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Liste des réservations</h1>
+   
+            {% for reservation in reservation %}
+                <ul>
+                    <li><img class="photoTitre" src="{{ reservation.ouvrage.photo }}"height = "190" width ="150"></li>
+                    <li>{{ reservation.ouvrage.titre }}</li>
+                    <li>réservé le {{ reservation.date|date("m/d/Y") }}</li>
+                </ul>
+                {% endfor %}
+            {% endblock %}

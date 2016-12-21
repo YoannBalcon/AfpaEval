@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Liste des emprunts</h1>
+            {% for emprunt in emprunts %}
+                <ul>
+                    <li><img class="photoTitre" src="{{ emprunt.ouvrage.photo }}"height = "190" width ="150"></li>
+                    <li>{{ emprunt.ouvrage.titre }}</li>
+                    <li>emprunté le {{ emprunt.dateEmprunt|date("d/m/Y") }}</li>
+                    <li>A rendre avant le {{ emprunt.dateRetour|date("d/m/Y") }}</li>
+                </ul>
+                {% endfor %}
+            {% endblock %}

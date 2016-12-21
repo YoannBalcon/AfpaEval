@@ -51,15 +51,23 @@ body {
 #flexBig{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
-#rightBlock
-{
+
+#leftBlock{
+    flex:1;
+    background-color: gray;
+    display:flex;
+    justify-content: flex-start;
+}
+
+
+#rightBlock{
     justify-content: flex-end;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
+
 
 /***Bloc Contact***/
 
@@ -120,7 +128,7 @@ body {
 
 
 #footer{
-    position: absolute; bottom: 0; left: 0; right: 0;
+
     text-align: center;
     display: block;
     color : white;

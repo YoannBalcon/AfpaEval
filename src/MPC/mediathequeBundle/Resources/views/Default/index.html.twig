@@ -1,7 +1,32 @@
     {% extends "base.html.twig" %}
     
     {% block title %}{{ parent() }} - Médiathèque {% endblock %}
-
-
+    
     {% block body %}
-     {% endblock %}
+        <div id="Events"></div>
+    {% endblock %}
+    
+    
+    {% block javascripts %}
+
+<script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/phantom", true);
+    xhr.onload = function (e) {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+
+        document.getElementById("Events").innerHTML = xhr.responseText;
+
+      } else {
+        console.error(xhr.statusText);
+      }
+    }
+    };
+    xhr.onerror = function (e) {
+    console.error(xhr.statusText);
+    };
+xhr.send(null);
+</script>
+{% endblock %}
