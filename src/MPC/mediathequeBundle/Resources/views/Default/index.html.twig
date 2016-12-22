@@ -1,32 +1,41 @@
-    {% extends "base.html.twig" %}
-    
-    {% block title %}{{ parent() }} - Médiathèque {% endblock %}
-    
-    {% block body %}
-        <div id="Events"></div>
-    {% endblock %}
-    
-    
-    {% block javascripts %}
+{% extends "base.html.twig" %}
 
-<script type="text/javascript">
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/phantom", true);
-    xhr.onload = function (e) {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        console.log(xhr.responseText);
+{% block title %}{{ parent() }} - Médiathèque {% endblock %}
 
-        document.getElementById("Events").innerHTML = xhr.responseText;
-
-      } else {
-        console.error(xhr.statusText);
-      }
-    }
-    };
-    xhr.onerror = function (e) {
-    console.error(xhr.statusText);
-    };
-xhr.send(null);
-</script>
+{% block body %}
+    <div id="nextEvents">
+            <h1>Bientôt dans votre médiathèque</h1>
+        <div id="events">
+        </div>
+    </div>
+        <div id="listEvents">
+            <h1>Tous les événements</h1>
+        </div>    
 {% endblock %}
+
+
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/evenements", true);
+        xhr.onload = function (e) {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+
+                    document.getElementById("events").innerHTML = xhr.responseText;
+
+                } else {
+                    console.error(xhr.statusText);
+                }
+            }
+        };
+        xhr.onerror = function (e) {
+            console.error(xhr.statusText);
+        };
+        xhr.send(null);
+    </script>
+{% endblock %}
+

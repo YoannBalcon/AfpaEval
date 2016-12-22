@@ -2,19 +2,19 @@
 {% block title %}{{ parent() }} - Catalogue {% endblock %}
 
 {% block navbar %}
-    </div>
+</div>
 
-    <div>
-        <ul id ="homeNavBar">
-            <li><a class="itemNavbar"  href="#">Cadre de vie</a></li>
-            <li><a class="itemNavbar"  href="#">Vie municipale</a></li>
-            <li><a class="itemNavbar" href="#">Vie locale et sociale</a></li>
-            <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
-            <li><a class="itemNavbar" href="#">Liens</a></li>
-            <li><a class="itemNavbar" href="#">Economie</a></li>
-            <li><a class="itemNavbar" id="catalog" href="../">Revenir à l'accueil</a></li>             
-        </ul>
-    </div>
+<div>
+    <ul id ="homeNavBar">
+        <li><a class="itemNavbar"  href="#">Cadre de vie</a></li>
+        <li><a class="itemNavbar"  href="#">Vie municipale</a></li>
+        <li><a class="itemNavbar" href="#">Vie locale et sociale</a></li>
+        <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
+        <li><a class="itemNavbar" href="#">Liens</a></li>
+        <li><a class="itemNavbar" href="#">Economie</a></li>
+        <li><a class="itemNavbar" id="catalog" href="../">Revenir à l'accueil</a></li>             
+    </ul>
+</div>
 {% endblock %}
 
 {% block body %}
@@ -24,6 +24,7 @@
                 <th>Aperçu</th>
                 <th>Titre</th>
                 <th>Auteur</th>
+                <th>Ajouté le</th>
             </tr>
         </thead>
         <tbody>
@@ -32,11 +33,9 @@
                     <td><img class="photoTitre" src="{{ ouvrage.photo }}"height = "190" width ="150"</td>
                     <td><a href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></td>
                     <td>{{ouvrage.auteur.prenom}} {{ouvrage.auteur.nom}} </td>  
+                    <td>{{ouvrage.date|date("m/d/Y")}}</td>  
 
-                    {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
-                        {% set reserve = false %}
-                        {% set borrow = false %}
-                        
+                    {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %} {% set reserve = false %}
                         {% for dispo in dispos %}
                             {% if dispo.ouvrage == ouvrage %}
                                 {% set reserve = true %}
@@ -44,7 +43,7 @@
                         {% endfor%}
                         {% if reserve %}
                             <td>Indisponible</td>
-                        {% else %}                        
+                        {% else %}          
                             <td><a href="{{ path('mpc_reservation', {'id': ouvrage.id }) }}">Réserver</a></td>
                         {% endif %}
                     {% endif %}

@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../css/style.css" media="screen">
 </head>
 
+    <div id="logo"><a href="{{ path ('mp_cmediatheque_homepage') }}"><img src="../Images/logo.gif" alt="Pleyber-Christ  - Logo"/></a> 
 {% block navbar %}
-    <div id="logo"><a href="http://www.pleyber-christ.fr"><img src="http://www.pleyber-christ.fr/medias/images/www/structure/contenu_logo_pleyber.gif" alt="Pleyber-Christ  - Logo"/></a> 
     </div>
 
     <div>
@@ -21,13 +21,27 @@
             <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
             <li><a class="itemNavbar" href="#">Liens</a></li>
             <li><a class="itemNavbar" href="#">Economie</a></li>
-            <li class="logButtons"><a class="itemNavbar" href="{{ path ('mp_cmediatheque_catalogue') }}">Consulter le catalogue</a></li>
-
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <li class="logButtons"><a class="itemNavbar" href="#">Bonjour</a></li>
-                {% endif %}
+            <li><a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_catalogue') }}">Catalogue</a></li>
+            <li><a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}">Nouveautés</a></li>
         </ul>
     </div>
+
+    <div id="navBarMedia">
+        <div class="navMedia">
+            <button class="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            <div class="content">
+                <a class="itemNavbarMedia" href="#">Cadre de vie</a>
+                <a class="itemNavbarMedia" href="#">Vie municipale</a>
+                <a class="itemNavbarMedia" href="#">Vie locale et sociale</a>
+                <a class="itemNavbarMedia" href="#">Vie associative et culturelle</a>
+                <a class="itemNavbarMedia" href="#">Liens</a>
+                <a class="itemNavbarMedia" href="#">Economie</a>
+            </div>
+        </div>
+            <a class="itemNavbarMedia" id="mediaCatalog" href="{{ path ('mp_cmediatheque_catalogue') }}">Catalogue</a>
+            <a class="itemNavbarMedia" id="mediaCatalog" href="{{ path ('mp_cmediatheque_nouveaute') }}">Nouveautés</a>
+    </div>
+
 {% endblock %}
 
 <div id="flexBig">
@@ -35,55 +49,65 @@
         {% block body %}
         {% endblock %}
     </div>
-    <div id="rightBlock">
+    <div id="rightBlock">        
         <div>
             <ul id="blockContact">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
                     <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
-                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"> Mes réservations</a></li>
-                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"> Mes emprunts</a></li>
-                    {% else %}
-                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
-                <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
-                    {%  endif %}
-                <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
-        </div>
+                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"><i class="fa fa-address-book-o" aria-hidden="true"></i> Mes réservations</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"><i class="fa fa-address-book" aria-hidden="true"></i> Mes emprunts</a></li>
+                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
 
-        <div id="blockHours">
-            <h3>Horaires d'ouverture</h3>
-            <table>    
-                <tr>
-                    <td>lundi</td>
-                    <td>Fermé</td>
-                </tr>
-                <tr>
-                    <td>mardi</td>
-                    <td>15:00–19:00</td>
-                </tr>
-                <tr>
-                    <td>mercredi</td>
-                    <td>10:00–18:00</td>
-                </tr>
-                <tr>
-                    <td>jeudi</td>
-                    <td>15:00–19:00</td>
-                </tr>
-                <tr>
-                    <td>vendredi</td>
-                    <td>15:00–19:00</td>
-                </tr>
-                <tr>
-                    <td>samedi</td>
-                    <td>10:00–17:00</td>
-                </tr>
-                <tr>
-                    <td>dimanche</td>
-                    <td>Fermé</td>
-                </tr>
-            </table>
+                {% elseif is_granted("ROLE_ADMIN") %}
+                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_listeReservations')}}"><i class="fa fa-list" aria-hidden="true"></i> Liste des réservations</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_listeEmprunt')}}"><i class="fa fa-list" aria-hidden="true"></i> Liste des emprunts</a></li>
+                    <li><a class="itemContact" href="#"><i class="fa fa-book" aria-hidden="true"></i> Ajouter un ouvrage au catalogue</a></li>
+
+                {% else %}
+                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
+                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
+                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
+                    {%  endif %}
         </div>
+        {% block hours %}
+            <div id="blockHours">
+                <h3>Horaires d'ouverture</h3>
+                <table>    
+                    <tr>
+                        <td>lundi</td>
+                        <td>Fermé</td>
+                    </tr>
+                    <tr>
+                        <td>mardi</td>
+                        <td>15:00–19:00</td>
+                    </tr>
+                    <tr>
+                        <td>mercredi</td>
+                        <td>10:00–18:00</td>
+                    </tr>
+                    <tr>
+                        <td>jeudi</td>
+                        <td>15:00–19:00</td>
+                    </tr>
+                    <tr>
+                        <td>vendredi</td>
+                        <td>15:00–19:00</td>
+                    </tr>
+                    <tr>
+                        <td>samedi</td>
+                        <td>10:00–17:00</td>
+                    </tr>
+                    <tr>
+                        <td>dimanche</td>
+                        <td>Fermé</td>
+                    </tr>
+                </table>
+            </div>
+        {% endblock %}
     </div>
 </div>
+
 
 
 {% block footer %}
@@ -93,6 +117,15 @@
     </footer>
 {% endblock %}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script>
+        function navbarOpen() {
+            document.getElementById("HomeNavbar").style.display = "block";
+        }
 
+        function navbarClose() {
+            document.getElementById("HomeNavbar").style.display = "none";
+        }
+    </script>
+{% endblock %}
 </html>

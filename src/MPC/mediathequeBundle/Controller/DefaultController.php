@@ -24,18 +24,31 @@ class DefaultController extends Controller {
     public function catalogueAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $ouvrages = $em->getRepository('MPCmediathequeBundle:Ouvrage')->findBy([], ['date' => 'DESC']);
-
+        $ouvrages = $em->getRepository('MPCmediathequeBundle:Ouvrage')->findAll();
+        $dispos = $em->getRepository('MPCmediathequeBundle:Reservation')->findAll();
+        $emprunts = $em->getRepository('MPCmediathequeBundle:Emprunt')->findAll();
         return $this->render('MPCmediathequeBundle:Default:catalogue.html.twig', array(
-                    'ouvrages' => $ouvrages,));
+                    'ouvrages' => $ouvrages, 'dispos' => $dispos, 'emprunts' => $emprunts));
     }
-    
-    /**Méthodes pour les réservations**/
+
+    public function nouveauteAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $ouvrages = $em->getRepository('MPCmediathequeBundle:Ouvrage')->findBy([], ['date' => 'DESC']);
+        $dispos = $em->getRepository('MPCmediathequeBundle:Reservation')->findAll();
+        $emprunts = $em->getRepository('MPCmediathequeBundle:Emprunt')->findAll();
+
+
+        return $this->render('MPCmediathequeBundle:Default:nouveaute.html.twig', array(
+                    'ouvrages' => $ouvrages, 'dispos' => $dispos, 'emprunts' => $emprunts));
+    }
+
+    /*     * Méthodes pour les réservations* */
 
     public function reservationAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $ouvrage_id = $request->get('id');
-        
+
         $today = new \DateTime();
         $objetOuvrage = $em->getRepository('MPCmediathequeBundle:Ouvrage')->find($ouvrage_id);
 
@@ -56,79 +69,88 @@ class DefaultController extends Controller {
 
         $listResa = $em->getRepository('MPCmediathequeBundle:Reservation')->findAll();
 
-        return $this->render('MPCmediathequeBundle:Default:listeResa.html.twig', array( 'listeResa' => $listResa,));            
+        return $this->render('MPCmediathequeBundle:Default:listeResa.html.twig', array('listeResa' => $listResa,));
     }
-   
+
     public function userListresaAction() {
         $em = $this->getDoctrine()->getManager();
 
         $User = $this->getUser();
         $reservations = $em->getRepository('MPCmediathequeBundle:Reservation')->findByUtilisateur($this->getUser());
-        
-        
+
+
         return $this->render('MPCmediathequeBundle:Default:userListResa.html.twig', array('reservation' => $reservations, 'User' => $User));
     }
-    
-    
-    /**Méthodes pour les emprunts**/
-    
-    
-     public function empruntAction(Request $request) {
-        $em = $this->getDoctrine()->getManager();        
+
+    /*     * Méthodes pour les emprunts* */
+
+    public function empruntAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
         $id_select = $request->get('id');
-        
+
         $date = new \DateTime();
         $today = new \DateTime();
-        $delai = new \DateInterval("P14D"); 
+        $delai = new \DateInterval("P14D");
         $retour = $today->add($delai);
-        
-        $objetEmprunt = $em->getRepository('MPCmediathequeBundle:Reservation')->findOneBy(array('id' => $id_select)); 
-        
+
+        $objetEmprunt = $em->getRepository('MPCmediathequeBundle:Reservation')->findOneBy(array('id' => $id_select));
+
         $emprunt = new Emprunt;
-        $emprunt->setOuvrage($objetEmprunt->getOuvrage()); 
+        $emprunt->setOuvrage($objetEmprunt->getOuvrage());
         $emprunt->SetdateEmprunt($date);
-        $emprunt->setUtilisateur($objetEmprunt->getUtilisateur());  
+        $emprunt->setUtilisateur($objetEmprunt->getUtilisateur());
         $emprunt->setdateRetour($retour);
         $em->persist($emprunt);
-        
+
         $reservation = $em->getRepository('MPCmediathequeBundle:Reservation')->findOneBy(array('id' => $id_select));
-        
+
         $em->remove($reservation);
         $em->flush();
-        
-        return $this->render('MPCmediathequeBundle:Default:confirm_emprunt.html.twig', array('emprunt' => $emprunt, 'retour' =>$retour));
+
+        return $this->render('MPCmediathequeBundle:Default:confirm_emprunt.html.twig', array('emprunt' => $emprunt, 'retour' => $retour));
     }
-    
-     public function listeEmpruntAction() {
+
+    public function listeEmpruntAction() {
         $em = $this->getDoctrine()->getManager();
-        
-        $today = new \DateTime();        
+
+        $today = new \DateTime();
         $emprunts = $em->getRepository('MPCmediathequeBundle:Emprunt')->findAll();
-        
+
         return $this->render('MPCmediathequeBundle:Default:listeEmprunt.html.twig', array('emprunts' => $emprunts, 'today' => $today));
     }
-    
-     public function userListEmpruntAction() {
+
+    public function userListEmpruntAction() {
         $em = $this->getDoctrine()->getManager();
 
         $User = $this->getUser();
-        $today = new \DateTime();        
+        $today = new \DateTime();
         $emprunts = $em->getRepository('MPCmediathequeBundle:Emprunt')->findByUtilisateur($this->getUser());
-        
-        
+
+
         return $this->render('MPCmediathequeBundle:Default:userListEmprunt.html.twig', array('emprunts' => $emprunts, 'today' => $today, 'User' => $User));
     }
-    
-    public function EventAction() {
-        return $this->render('MPCmediathequeBundle:Default:index.html.twig');       
+
+    public function retourAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $id_select = $request->get('id');
+
+        $emprunts = $em->getRepository('MPCmediathequeBundle:Emprunt')->findOneBy(array('id' => $id_select));
+        $em->remove($emprunts);
+        $em->flush();
+
+        return $this->render('MPCmediathequeBundle:Default:confirm_retour.html.twig', array('retours' => $emprunts,));
     }
-    
-    public function phantomAction() {
+
+    public function EventAction() {
+        return $this->render('MPCmediathequeBundle:Default:index.html.twig');
+    }
+
+    public function showEventsAction() {
         $em = $this->getDoctrine()->getManager();
 
         $evenements = $em->getRepository('MPCmediathequeBundle:Evenements')->findAll();
 
-        return $this->render('MPCmediathequeBundle:Default:phantom.html.twig', array( 'evenements' => $evenements,));     
+        return $this->render('MPCmediathequeBundle:Default:evenements.html.twig', array('evenements' => $evenements,));
     }
-    
-    }
+
+}

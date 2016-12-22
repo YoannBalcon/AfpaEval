@@ -13,6 +13,10 @@ mp_cmediatheque_login:
 mp_cmediatheque_register:
     path:     /register
     defaults: { _controller: MPCmediathequeBundle:Default:register }
+
+mp_cmediatheque_nouveaute:
+    path:     /news
+    defaults: { _controller: MPCmediathequeBundle:Default:nouveaute }
     
 mp_cmediatheque_catalogue:
     path:    /catalogue/
@@ -42,6 +46,10 @@ mpc_userListEmprunt:
     path:    /userListEmprunt
     defaults: { _controller: MPCmediathequeBundle:Default:userListEmprunt }
 
-mpc_phantom:
-    path:    /phantom
-    defaults: { _controller: MPCmediathequeBundle:Default:phantom }
+mpc_evenements:
+    path:    /evenements
+    defaults: { _controller: MPCmediathequeBundle:Default:showEvents }
+
+mpc_retour:
+    path:    /retour
+    defaults: { _controller: MPCmediathequeBundle:Default:retour }

@@ -3,19 +3,19 @@
 
 {% block body %}
     <h1>Liste des Emprunts</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Document</th>
-                <th> Utilisateur</th>
-                <th> Date d'emprunt</th>
-            </tr>
-        </thead> 
-        <tbody>
-            {% for emprunt in emprunts %}
-                <tr>
-                    <td>{{ emprunt.ouvrage.titre }}</td>
-                    <td>{{ emprunt.utilisateur.username }}</td>
-                    <td>{{ emprunt.dateRetour|date("m/d/Y") }}</td>
-                {% endfor %}
-            {% endblock %}
+
+    {% for emprunt in emprunts %}
+        <ul>
+            <li><img class="photoTitre" src="{{ emprunt.ouvrage.photo }}"height = "190" width ="150"</li>
+            <li>{{ emprunt.ouvrage.titre }}</li>
+            <li>Emprunté par : {{ emprunt.utilisateur.username }}</li>
+            <li>date d'emprunt : {{ emprunt.dateEmprunt|date("d/m/Y") }}</li>
+            <li>date de retour : {{ emprunt.dateRetour|date("d/m/Y") }}</li>
+            <li><a href ="{{ path('mpc_retour',  { 'id': emprunt.id })}}">Valider le retour</a></li>
+
+        </ul>
+    {% endfor %}
+{% endblock %}
+{% block hours %}
+{% endblock %}
+

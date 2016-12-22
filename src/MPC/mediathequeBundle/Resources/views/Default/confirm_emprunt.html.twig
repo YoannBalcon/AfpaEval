@@ -6,7 +6,7 @@
     <div>    
         <p>Emprunt confirmé</p>
         <p>date de retour: {{ retour|date("m/d/Y") }}</p>
-        
+        <a href="{{ path ('mpc_listeReservations') }}">Retour aux réservations</a>
     </div>
 
 {% endblock %}
