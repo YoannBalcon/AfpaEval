@@ -1,0 +1,70 @@
+/****==>STYLE FOR TABLETS<==****/
+@media screen and (max-width:980px){
+    #homeNavBar { 
+        display: none;
+    }
+    
+    #navBarMedia {
+        background-color: #443F3F;
+    }
+
+     /*****Bouton menu small screens****/
+    .menuBtn {
+        background-color: #443F3F;
+        color: #FFB700;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .navMedia {
+        position: relative;
+        display: inline-block;
+    }
+
+    .content {
+        display: none;
+        position: absolute;
+        background-color: #443F3F;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .content a {
+        color: #FFB700;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .content a:hover {
+        color: black;
+        background-color: #FFB700;
+    }
+
+    .navMedia:hover .content {
+        display: block;
+    }
+
+    .navMedia:hover .menuBtn {
+        color: black;
+        background-color: #FFB700;
+    }
+    
+    #mediaCatalog{
+        padding: 16px;
+        text-decoration: none;
+        background-color: #443F3F;
+        color: black;
+        background-color: #FFB700;
+    }
+    
+    #mediaCatalog:hover{
+        color:#FFB700;
+        background-color: #443F3F;  
+    }
+    #catalog{
+        justify-content: flex-end;
+    }
+}

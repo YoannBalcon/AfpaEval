@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ parent() }} - Catalogue {% endblock %}
+{% block title %}{{ parent() }} - Nouveautés {% endblock %}
 
 {% block navbar %}
-</div>
 
 <div>
     <ul id ="homeNavBar">
@@ -12,9 +11,24 @@
         <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
         <li><a class="itemNavbar" href="#">Liens</a></li>
         <li><a class="itemNavbar" href="#">Economie</a></li>
-        <li><a class="itemNavbar" id="catalog" href="../">Revenir à l'accueil</a></li>             
+        <li><a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}">Revenir à l'accueil</a></li>             
     </ul>
 </div>
+    
+    <div class="navBarMedia">
+        <div class="navMedia">
+            <button class="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            <div class="content">
+                <a class="itemNavbarMedia" href="#">Cadre de vie</a>
+                <a class="itemNavbarMedia" href="#">Vie municipale</a>
+                <a class="itemNavbarMedia" href="#">Vie locale et sociale</a>
+                <a class="itemNavbarMedia" href="#">Vie associative et culturelle</a>
+                <a class="itemNavbarMedia" href="#">Liens</a>
+                <a class="itemNavbarMedia" href="#">Economie</a>
+            </div>
+        </div>
+        <a class="itemNavbarMedia" id = "mediaCatalog" href="{{ path ('mp_cmediatheque_homepage') }}">Accueil</a>
+    </div>
 {% endblock %}
 
 {% block body %}

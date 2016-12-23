@@ -1,13 +1,8 @@
     #logo{
         text-align: center;
     }
-/****==>STYLE FOR DESKTOP<==****/
-
-    .itemNavMedia{
-        display: none;
-    }
-    
-    .navMedia{
+/****==>STYLE FOR DESKTOPs<==****/   
+    .navBarMedia{
         display: none;
     }
     
@@ -24,7 +19,6 @@
     }
 
     .itemNavbar {        
-        justify-content: flex-start;
         display: inline-block;
         border-right: 1px solid #bbb;
         color: #FFB700;
@@ -39,7 +33,6 @@
     }
 
     #catalog {
-        justify-content: flex-end;
         float: right;   
         border-left: 1px solid #bbb;
         color: black;
@@ -54,6 +47,7 @@
     #flexBig{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap-reverse;
         justify-content: space-between;
         width: 100%;
     }
@@ -98,7 +92,7 @@
     }
 
     /***bloc Horaires****/
-    #blockHours {    
+    .blockHours {    
         margin: 0;
         padding: 0;
         width: 200px;
@@ -121,17 +115,28 @@
         color : white;
         background-color: #868B94;
     }
-/****==>STYLE FOR TABLETS<==****/
+
+    
+    
+    
+    
+    /****==>STYLE FOR TABLETS<==****/
 @media screen and (max-width:980px){
     #homeNavBar { 
         display: none;
     }
-    #navBarMedia {
-
+    
+    .navBarMedia {
+        display: flex;  
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: left;
+        font-family: verdana;
         background-color: #443F3F;
     }
+    
 
-     /*****Bouton menu small screens****/
+     /*****Bouton menu****/
     .menuBtn {
         background-color: #443F3F;
         color: #FFB700;
@@ -142,6 +147,7 @@
     }
 
     .navMedia {
+        display: flex;
         position: relative;
         display: inline-block;
     }
@@ -152,6 +158,7 @@
         background-color: #443F3F;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        font-size: 12px;
     }
 
     .content a {
@@ -176,18 +183,40 @@
     }
     
     #mediaCatalog{
+
         padding: 16px;
         text-decoration: none;
         background-color: #443F3F;
         color: black;
         background-color: #FFB700;
+
     }
     
     #mediaCatalog:hover{
         color:#FFB700;
         background-color: #443F3F;  
     }
-    #catalog{
-        justify-content: flex-end;
+    
+    .blockHours {    
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: #f1f1f1;
+    }
+    
+     #footer{
+        font-size:12px;
+    }
+}
+
+
+@media screen and (max-width:450px){
+    
+    .blockHours {
+        display: none;
+    }
+    
+    #footer{
+        font-size:10px;
     }
 }

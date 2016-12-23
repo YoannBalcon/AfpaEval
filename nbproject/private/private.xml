@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Entity/Evenements.php</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Resources/views/Default/nouveaute.html.twig</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/web/css/style.css</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Resources/views/Default/catalogue.html.twig</file>
-            <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Controller/DefaultController.php</file>
+            <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Controller/AuteursController.php</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/src/MPC/mediathequeBundle/Resources/config/routing.yml</file>
             <file>file:/home/ybalcon/Documents/Symfony/ProjetEval/app/Resources/views/base.html.twig</file>
         </group>

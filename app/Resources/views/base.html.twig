@@ -6,12 +6,11 @@
         <title>{% block title %}Pleyber-Christ{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"  media="screen">
 </head>
 
-    <div id="logo"><a href="{{ path ('mp_cmediatheque_homepage') }}"><img src="../Images/logo.gif" alt="Pleyber-Christ  - Logo"/></a> 
-{% block navbar %}
-    </div>
+<div id="logo"><a href="{{ path ('mp_cmediatheque_homepage') }}"><img src="../Images/logo.gif" alt="Pleyber-Christ  - Logo"/></a></div>
+        {% block navbar %}
 
     <div>
         <ul id ="homeNavBar">
@@ -26,7 +25,7 @@
         </ul>
     </div>
 
-    <div id="navBarMedia">
+    <div class="navBarMedia">
         <div class="navMedia">
             <button class="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
             <div class="content">
@@ -38,8 +37,8 @@
                 <a class="itemNavbarMedia" href="#">Economie</a>
             </div>
         </div>
-            <a class="itemNavbarMedia" id="mediaCatalog" href="{{ path ('mp_cmediatheque_catalogue') }}">Catalogue</a>
-            <a class="itemNavbarMedia" id="mediaCatalog" href="{{ path ('mp_cmediatheque_nouveaute') }}">Nouveautés</a>
+        <a class="itemNavbarMedia" id = "mediaCatalog" href="{{ path ('mp_cmediatheque_catalogue') }}">Catalogue</a>
+        <a class="itemNavbarMedia" id = "mediaCatalog" href="{{ path ('mp_cmediatheque_nouveaute') }}">Nouveautés</a>
     </div>
 
 {% endblock %}
@@ -53,10 +52,10 @@
         <div>
             <ul id="blockContact">
                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
-                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
-                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"><i class="fa fa-address-book-o" aria-hidden="true"></i> Mes réservations</a></li>
-                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"><i class="fa fa-address-book" aria-hidden="true"></i> Mes emprunts</a></li>
-                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
+                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i><p id ="myConnexion">Se déconnecter</p></a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"><i class="fa fa-address-book-o" aria-hidden="true"><p id="myReservation"></i> Mes réservations</p></a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"><i class="fa fa-address-book" aria-hidden="true"><p id="myEmprunts"></i> Mes emprunts</p></a></li>
+                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"><p id="myContact"></i> Contact</p></a></li>
 
                 {% elseif is_granted("ROLE_ADMIN") %}
                     <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
@@ -71,7 +70,7 @@
                     {%  endif %}
         </div>
         {% block hours %}
-            <div id="blockHours">
+            <div class="blockHours">
                 <h3>Horaires d'ouverture</h3>
                 <table>    
                     <tr>
