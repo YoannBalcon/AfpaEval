@@ -2,28 +2,29 @@
 {% block title %}{{ parent() }} - Nouveautés {% endblock %}
 
 {% block navigation %}
-        <h3 class ="navbarTitle">Nouveautés</h3>
-        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
+    <h3 class ="navbarTitle">Nouveautés</h3>
+    <div>    
+        <a class="itemNavbar" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}" title ="catalogue"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
+        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}" title ="accueil"><i class="fa fa-home" aria-hidden="true"></i><span id ="home"> Accueil</span></a>             
+    </div>    
 {% endblock %}
 
 {% block body %}
-    <table>
-        <thead>
-            <tr>
-                <th>Aperçu</th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Ajouté le</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for ouvrage in ouvrages %}
-                <tr>
-                    <td><img class="photoTitre" src="{{ ouvrage.photo }}"height = "190" width ="150"</td>
-                    <td><a href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></td>
-                    <td>{{ouvrage.auteur.prenom}} {{ouvrage.auteur.nom}} </td>  
-                    <td>{{ouvrage.date|date("m/d/Y")}}</td>  
+    <h3 class="smallTitle">Nouveautés</h3>
 
+    {% for ouvrage in ouvrages %}
+        <div class ="catalogContainer">
+            <div class ="catalogFiche">
+                <div id ="catalogPhoto">
+                    <a href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}"><img class="photoTitre" src="{{ ouvrage.photo }}"height = "190" width ="150"></a>
+                </div>                        
+                <div class ="catalogInfo">                        
+                    <p><a id="catalogTitle" href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></p>
+                    <p id ="catalogAuthor"> {{ouvrage.auteur.prenom}} {{ouvrage.auteur.nom}} </p>  
+                    <p>Ajouté le {{ouvrage.date|date("m/d/Y")}}</p>  
+                </div>
+
+                <div class ="catalogBtn">
                     {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %} {% set reserve = false %}
                         {% for dispo in dispos %}
                             {% if dispo.ouvrage == ouvrage %}
@@ -31,27 +32,19 @@
                             {% endif%}
                         {% endfor%}
                         {% if reserve %}
-                            <td>Indisponible</td>
+                            <p id ="indispo">Indisponible</p>
                         {% else %}          
-                            <td><a href="{{ path('mpc_reservation', {'id': ouvrage.id }) }}">Réserver</a></td>
+                            <p><a href="{{ path('mpc_reservation', {'id': ouvrage.id }) }}">Réserver</a></p>
                         {% endif %}
                     {% endif %}
-                    <td>
-                        {% if is_granted("ROLE_ADMIN") %}
-                            <ul> 
-                                <li id="editCatalogue">
-                                    <a href="#">éditer l'article</a>
-                                </li>                        
-                                <li id="editCatalogue">
-                                    <a href="#">supprimer l'article</a>
-                                </li>                        
-                            </ul>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <p><a id="editCatalogue" href="#">éditer l'article</a></p>                        
+                        <p><a id="eraseCatalogue" href="#">supprimer l'article</a></p>                        
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
 {% block hours %}
 {% endblock %}

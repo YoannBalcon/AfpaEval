@@ -2,28 +2,34 @@
 
 
 {% block navigation %}
-    <h3>Liste des Emprunts</h3>
+    <h3 class ="navbarTitle">Liste des emprunts</h3>
     <div>
-        <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
-        <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
-        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
+        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}" title ="accueil"><i class="fa fa-home" aria-hidden="true"></i><span id ="home"> Accueil</span></a>               
     </div>    
 {% endblock %}
 
 {% block body %}
+    <h3 class="smallTitle">Liste des emprunts</h3>
 
     {% for emprunt in emprunts %}
-        <ul>
-            <li><img class="photoTitre" src="{{ emprunt.ouvrage.photo }}"height = "190" width ="150"</li>
-            <li>{{ emprunt.ouvrage.titre }}</li>
-            <li>Emprunté par : {{ emprunt.utilisateur.username }}</li>
-            <li>date d'emprunt : {{ emprunt.dateEmprunt|date("d/m/Y") }}</li>
-            <li>date de retour : {{ emprunt.dateRetour|date("d/m/Y") }}</li>
-            <li><a href ="{{ path('mpc_retour',  { 'id': emprunt.id })}}">Valider le retour</a></li>
+        <div class ="catalogContainer">
+            <div class ="catalogFiche">
+                <div id ="catalogPhoto">
+                    <img class="photoTitre" src="{{ emprunt.ouvrage.photo }}"height = "190" width ="150">
+                </div>
+                <div class ="catalogInfo">                        
+                    <p>{{ emprunt.ouvrage.titre }}</p>
+                    <p>Emprunté par : {{ emprunt.utilisateur.username }}</p>
+                    <p>date d'emprunt : {{ emprunt.dateEmprunt|date("d/m/Y") }}</p>
+                    <p>date de retour : {{ emprunt.dateRetour|date("d/m/Y") }}</p>
+                </div> 
+                <div class ="catalogBtn">
+                    <li><a id="editCatalogue" href ="{{ path('mpc_retour',  { 'id': emprunt.id })}}">Valider le retour</a></li>
+                </div>
+            </div>
+        </div>
 
-        </ul>
     {% endfor %}
 {% endblock %}
 {% block hours %}
 {% endblock %}
-

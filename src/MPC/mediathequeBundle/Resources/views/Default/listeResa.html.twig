@@ -2,20 +2,28 @@
 
 {% block navigation %}
     <h3 class ="navbarTitle">Liste des réservations</h3>
-    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
-    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
-    <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
+    <div>
+        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}" title ="accueil"><i class="fa fa-home" aria-hidden="true"></i><span id ="home"> Accueil</span></a>             
+    </div>
 {% endblock %}
 {% block body %}
-
+    <h3 class="smallTitle">Liste des réservations</h3>
 
     {% for listeResa in listeResa %}
-        <ul>
-            <li><img class="photoTitre" src="{{ listeResa.ouvrage.photo }}"height = "190" width ="150"{{ listeResa.ouvrage.titre }}</li>
-            <li>Réservé par {{ listeResa.utilisateur.username }}</li>
-            <li> date de réservation : {{ listeResa.date|date("d/m/Y") }}</li>
-            <li><a href ="{{path('mpc_emprunt', { 'id': listeResa.id })}}">Valider l'emprunt</a></li>
-        </ul>
+        <div class ="catalogContainer">
+            <div class ="catalogFiche">
+                <div id ="catalogPhoto">
+                    <img class="photoTitre" src="{{ listeResa.ouvrage.photo }}"height = "190" width ="150"{{ listeResa.ouvrage.titre }}>
+                </div>
+                <div class ="catalogInfo">                        
+                    <p id="catalogTitle">Réservé par {{ listeResa.utilisateur.username }}</p>
+                    <p id="catalogAuthor"> date de réservation : {{ listeResa.date|date("d/m/Y") }}</p>
+                </div>
+                <div class ="catalogBtn">
+                    <p><a id="editCatalogue"href ="{{path('mpc_emprunt', { 'id': listeResa.id })}}">Valider l'emprunt</a></p>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
 {% block hours %}{% endblock %}

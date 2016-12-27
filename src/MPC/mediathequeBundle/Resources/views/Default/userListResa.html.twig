@@ -2,18 +2,30 @@
 
 {% block navigation %}
     <h3 class ="navbarTitle">Mes réservations</h3>
-    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
-    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
-    <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
+    <div>
+        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}" title ="accueil"><i class="fa fa-home" aria-hidden="true"></i><span id ="home"> Accueil</span></a>             
+    </div>
 {% endblock %}
 
 {% block body %}
+        <h3 class="smallTitle">Mes réservations</h3>
+
     {% for reservation in reservation %}
-        <ul>
-            <li><img class="photoTitre" src="{{ reservation.ouvrage.photo }}"height = "190" width ="150"></li>
-            <li>{{ reservation.ouvrage.titre }}</li>
-            <li>réservé le {{ reservation.date|date("m/d/Y") }}</li>
-        </ul>
+        <div class ="catalogContainer">
+            <div class ="catalogFiche">
+                <div id ="catalogPhoto">
+                    <img class="photoTitre" src="{{ reservation.ouvrage.photo }}"height = "190" width ="150">
+                </div>
+                <div class ="catalogInfo">                        
+                    <p id="catalogTitle">{{ reservation.ouvrage.titre }}</p>
+                    <p id="catalogAuthor">{{ reservation.ouvrage.auteur.prenom }}{{ reservation.ouvrage.auteur.nom }}</p>
+                </div>
+                <div class ="catalogBtn">
+                    <p> réservé le {{ reservation.date|date("d/m/Y") }}</p>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
 {% block hours %}{% endblock %}
+

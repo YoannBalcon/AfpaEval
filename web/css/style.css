@@ -13,7 +13,11 @@
         font-family: verdana;
         background-color: #868B94;
     }
-    
+    .smallTitle{
+        text-align: center;
+        background-color: #868B94;
+        display: none;
+    }
      /*****Bouton menu****/
     .menuBtn {
         background-color: #443F3F;
@@ -87,6 +91,7 @@
         background-color: #443F3F;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        list-style-type: none;
     }
     .profilContent a{
         color: #FFB700;
@@ -158,9 +163,29 @@
     .catalogBtn{
         text-align: center;
     }
-    #indispo{
+        #indispo{
         background-color: lightcoral;
         color:red;
+    }
+    #editCatalogue{
+        text-decoration: none;
+        background-color: lightgreen;
+        color:green;
+    }
+    #editCatalogue:hover{
+        text-decoration: none;
+        color: lightgreen;
+        background-color:green;
+    }
+    #eraseCatalogue{
+        text-decoration: none;
+        background-color: lightcoral;
+        color:red;
+    }
+    #eraseCatalogue:hover{
+        text-decoration: none;
+        color: lightcoral;
+        background-color:red;
     }
     
     /***Bloc Contact***/
@@ -248,6 +273,9 @@
            .navbarTitle{
         display:none;
     } 
+    .smallTitle{
+        display: block;
+    }
 }
 
 @media screen and (max-width:450px){ 
@@ -271,15 +299,18 @@
     #news{
         display: none;
     }
+    #home{
+        display: none;
+    }
+    .catalogInfo{
+        display: none;
+    }
     #catalog{
         padding-left: 35px;
         padding-right: 35px;
     }
     #footer{
         font-size:10px;
-    }
-    .catalogInfo{
-        display: none;
     }
     .catalogFiche{
         flex-direction: column;
