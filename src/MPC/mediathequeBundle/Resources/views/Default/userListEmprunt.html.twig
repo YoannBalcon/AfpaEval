@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
-
-{% block body %}
-    <h1>Liste des emprunts</h1>
-            {% for emprunt in emprunts %}
-                <ul>
-                    <li><img class="photoTitre" src="{{ emprunt.ouvrage.photo }}"height = "190" width ="150"></li>
-                    <li>{{ emprunt.ouvrage.titre }}</li>
-                    <li>emprunté le {{ emprunt.dateEmprunt|date("d/m/Y") }}</li>
-                    <li>A rendre avant le {{ emprunt.dateRetour|date("d/m/Y") }}</li>
-                </ul>
-                {% endfor %}
-            {% endblock %}
-            {% block hours %}
+{% block navigation %}
+    <h3 class ="navbarTitle">Mes emprunts</h3>
+    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
+    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
+    <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
 {% endblock %}
+{% block body %}
+    {% for emprunt in emprunts %}
+        <ul>
+            <li><img class="photoTitre" src="{{ emprunt.ouvrage.photo }}"height = "190" width ="150"></li>
+            <li>{{ emprunt.ouvrage.titre }}</li>
+            <li>emprunté le {{ emprunt.dateEmprunt|date("d/m/Y") }}</li>
+            <li>A rendre avant le {{ emprunt.dateRetour|date("d/m/Y") }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
+{% block hours %}{% endblock %}

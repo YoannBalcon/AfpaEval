@@ -12,33 +12,47 @@
 <div id="logo"><a href="{{ path ('mp_cmediatheque_homepage') }}"><img src="../Images/logo.gif" alt="Pleyber-Christ  - Logo"/></a></div>
         {% block navbar %}
 
-    <div>
-        <ul id ="homeNavBar">
-            <li><a class="itemNavbar" href="#">Cadre de vie</a></li>
-            <li><a class="itemNavbar" href="#">Vie municipale</a></li>
-            <li><a class="itemNavbar" href="#">Vie locale et sociale</a></li>
-            <li><a class="itemNavbar" href="#">Vie associative et culturelle</a></li>
-            <li><a class="itemNavbar" href="#">Liens</a></li>
-            <li><a class="itemNavbar" href="#">Economie</a></li>
-            <li><a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_catalogue') }}">Catalogue</a></li>
-            <li><a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}">Nouveautés</a></li>
-        </ul>
-    </div>
-
     <div class="navBarMedia">
         <div class="navMedia">
-            <button class="menuBtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            <button class="menuBtn"><span id="menu">Menu</span><i class="fa fa-bars" id ="menuSmall" aria-hidden="true"></i></button>
             <div class="content">
-                <a class="itemNavbarMedia" href="#">Cadre de vie</a>
-                <a class="itemNavbarMedia" href="#">Vie municipale</a>
-                <a class="itemNavbarMedia" href="#">Vie locale et sociale</a>
-                <a class="itemNavbarMedia" href="#">Vie associative et culturelle</a>
-                <a class="itemNavbarMedia" href="#">Liens</a>
-                <a class="itemNavbarMedia" href="#">Economie</a>
+                <a href="#">Cadre de vie</a>
+                <a href="#">Vie municipale</a>
+                <a href="#">Vie locale et sociale</a>
+                <a href="#">Vie associative et culturelle</a>
+                <a href="#">Liens</a>
+                <a href="#">Economie</a>
             </div>
         </div>
-        <a class="itemNavbarMedia" id = "mediaCatalog" href="{{ path ('mp_cmediatheque_catalogue') }}">Catalogue</a>
-        <a class="itemNavbarMedia" id = "mediaCatalog" href="{{ path ('mp_cmediatheque_nouveaute') }}">Nouveautés</a>
+        {% block navigation %}
+        <h3 class ="navbarTitle">Médiathèque de Pleyber-Christ</h3>
+        <div>
+           <a class="itemNavbar" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}" title ="catalogue"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
+           <a class="itemNavbar" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"title ="nouveautés"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
+        </div>
+        {% endblock %}
+        
+        <div class="profilSmall">
+            <button class="profilBtn"><i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
+            <div class="profilContent">
+                {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
+                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"> Mes réservations</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"> Mes emprunts</a></li>
+                    <li><a class="itemContact" href="#"> Mon profil</a></li>
+
+                {% elseif is_granted("ROLE_ADMIN") %}
+                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"> Se déconnecter</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_listeReservations')}}"> Liste des réservations</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_listeEmprunt')}}"> Liste des emprunts</a></li>
+                    <li><a class="itemContact" href="#"> Ajouter un ouvrage au catalogue</a></li>
+
+                {% else %}
+                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"> Se connecter</a></li>
+                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"> S'inscrire</a></li>
+                    {%  endif %}
+            </div>
+        </div>
     </div>
 
 {% endblock %}
@@ -52,10 +66,10 @@
         <div>
             <ul id="blockContact">
                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
-                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i><p id ="myConnexion">Se déconnecter</p></a></li>
-                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"><i class="fa fa-address-book-o" aria-hidden="true"><p id="myReservation"></i> Mes réservations</p></a></li>
-                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"><i class="fa fa-address-book" aria-hidden="true"><p id="myEmprunts"></i> Mes emprunts</p></a></li>
-                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"><p id="myContact"></i> Contact</p></a></li>
+                    <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>Se déconnecter</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListeReservations') }}"><i class="fa fa-address-book-o" aria-hidden="true"></i> Mes réservations</a></li>
+                    <li><a class="itemContact" href="{{ path('mpc_userListEmprunt') }}"><i class="fa fa-address-book" aria-hidden="true"></i> Mes emprunts</a></li>
+                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Mon profil</a></li>
 
                 {% elseif is_granted("ROLE_ADMIN") %}
                     <li><a class="itemContact" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Se déconnecter</a></li>
@@ -66,8 +80,8 @@
                 {% else %}
                     <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
                     <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
-                    <li><a class="itemContact" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contact</a></li>
                     {%  endif %}
+            </ul>
         </div>
         {% block hours %}
             <div class="blockHours">

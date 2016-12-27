@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
-
+{% block navigation %}
+    <h3 class ="navbarTitle">Liste des réservations</h3>
+    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
+    <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
+    <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
+{% endblock %}
 {% block body %}
-    <h1>Liste des réservations</h1>
+
 
     {% for listeResa in listeResa %}
         <ul>
@@ -13,5 +18,4 @@
         </ul>
     {% endfor %}
 {% endblock %}
-{% block hours %}
-{% endblock %}
+{% block hours %}{% endblock %}

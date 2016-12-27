@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
 
+{% block navigation %}
+    <h3>Liste des Emprunts</h3>
+    <div>
+        <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
+        <a class="itemNavbarMedia" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
+        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>             
+    </div>    
+{% endblock %}
+
 {% block body %}
-    <h1>Liste des Emprunts</h1>
 
     {% for emprunt in emprunts %}
         <ul>

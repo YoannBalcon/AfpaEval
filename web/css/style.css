@@ -1,49 +1,121 @@
+/****==>GENERAL STYLE<==****/   
     #logo{
         text-align: center;
     }
-/****==>STYLE FOR DESKTOPs<==****/   
-    .navBarMedia{
+    #menuSmall{
         display: none;
+    }    
+      .navBarMedia {
+        display: flex;  
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        font-family: verdana;
+        background-color: #868B94;
     }
     
-    /****NAVBAR****/
-    #homeNavBar {
-        display: flex;
-        flex-direction: row;
-        font-family: Verdana;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
+     /*****Bouton menu****/
+    .menuBtn {
         background-color: #443F3F;
-    }
-
-    .itemNavbar {        
-        display: inline-block;
-        border-right: 1px solid #bbb;
         color: #FFB700;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
+        padding: 18px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
     }
 
-    .itemNavbar:hover {
-        color : black;
-        background-color: #FFB700;
+    .navMedia {
+        position: relative;
+        display: inline-block;
+    }
+    
+     .navMedia:hover .content {
+        display: block;
     }
 
-    #catalog {
-        float: right;   
-        border-left: 1px solid #bbb;
+    .navMedia:hover .menuBtn {
         color: black;
         background-color: #FFB700;
     }
 
+    .content {
+        display: none;
+        position: absolute;
+        left:0;
+        background-color: #443F3F;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        font-size: 12px;
+    }
+
+    .content a {
+        color: #FFB700;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .content a:hover {
+        color: black;
+        background-color: #FFB700;
+    }
+    /***Bouton Profil***/
+     .profilSmall{
+        position: relative;
+        display: none;
+    }
+    .profilSmall:hover .profilContent{
+        display: block;
+    }
+    .profilSmall:hover .profilBtn{
+        color: black;
+        background-color: #FFB700;    }
+
+    .profilBtn{
+        background-color: #443F3F;
+        color: #FFB700;
+        padding: 18px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .profilContent{
+        display: none;
+        position: absolute;
+        right:0;
+        background-color: #443F3F;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    .profilContent a{
+        color: #FFB700;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    } 
+    .profilContent a:hover{
+        color: black;
+        background-color: #FFB700;
+    }
+    
+    
+    
+    
+    /***++***/
+    #catalog{        
+        display: inline-block;
+        text-decoration: none;
+        padding: 18px;
+        background-color: #443F3F;
+        color: black;
+        background-color: #FFB700;
+
+    }   
     #catalog:hover {
         color: #FFB700;
         background-color: #443F3F;
     }
-
     #flexBig{
         display: flex;
         flex-direction: row;
@@ -63,7 +135,34 @@
         display: flex;
         flex-direction: column;
     }
+/***Fiche ouvrage catalogue***/
 
+    .catalogContainer{
+        display: flex;
+        flex-direction: column;     
+    }
+    .catalogFiche{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-align: center;
+    }  
+    #catalogTitle{
+        text-decoration: none;
+        color: black;
+        font-size: 24px;
+    }
+    #catalogAuthor{
+       font-size: 18px;
+    }
+    .catalogBtn{
+        text-align: center;
+    }
+    #indispo{
+        background-color: lightcoral;
+        color:red;
+    }
+    
     /***Bloc Contact***/
     #blockContact {
         list-style-type: none;
@@ -108,95 +207,31 @@
     #listEvents{
         background-color: lightcoral;
     }
-
+    
+    /***Footer***/
     #footer{
         text-align: center;
         display: block;
         color : white;
         background-color: #868B94;
-    }
-
-    
-    
-    
+    } 
+         
     
     /****==>STYLE FOR TABLETS<==****/
 @media screen and (max-width:980px){
-    #homeNavBar { 
-        display: none;
-    }
-    
-    .navBarMedia {
-        display: flex;  
-        flex-direction: row;
-        justify-content: flex-end;
-        text-align: left;
-        font-family: verdana;
-        background-color: #443F3F;
-    }
-    
 
-     /*****Bouton menu****/
-    .menuBtn {
-        background-color: #443F3F;
-        color: #FFB700;
-        padding: 16px;
+    #menu{
+        display: none;
+    }    
+    .menuBtn{
+        padding: 18px;
+    }
+    #menuSmall{
+        display: block;
+    }
+    .navbarTitle{
         font-size: 16px;
-        border: none;
-        cursor: pointer;
     }
-
-    .navMedia {
-        display: flex;
-        position: relative;
-        display: inline-block;
-    }
-
-    .content {
-        display: none;
-        position: absolute;
-        background-color: #443F3F;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        font-size: 12px;
-    }
-
-    .content a {
-        color: #FFB700;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .content a:hover {
-        color: black;
-        background-color: #FFB700;
-    }
-
-    .navMedia:hover .content {
-        display: block;
-    }
-
-    .navMedia:hover .menuBtn {
-        color: black;
-        background-color: #FFB700;
-    }
-    
-    #mediaCatalog{
-
-        padding: 16px;
-        text-decoration: none;
-        background-color: #443F3F;
-        color: black;
-        background-color: #FFB700;
-
-    }
-    
-    #mediaCatalog:hover{
-        color:#FFB700;
-        background-color: #443F3F;  
-    }
-    
     .blockHours {    
         margin: 0;
         padding: 0;
@@ -207,16 +242,46 @@
      #footer{
         font-size:12px;
     }
+
+}
+    @media screen and (max-width:640px){
+           .navbarTitle{
+        display:none;
+    } 
 }
 
-
-@media screen and (max-width:450px){
-    
+@media screen and (max-width:450px){ 
     .blockHours {
         display: none;
     }
+}
+    /****==>MOBILE STYLE<==****/
+
+@media screen and (max-width:400px){ 
+    .profilSmall{
+        display: inline-block;
+    }
     
+    #blockContact{
+        display: none;
+    }
+    #cata{
+        display: none;
+    }
+    #news{
+        display: none;
+    }
+    #catalog{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
     #footer{
         font-size:10px;
+    }
+    .catalogInfo{
+        display: none;
+    }
+    .catalogFiche{
+        flex-direction: column;
     }
 }
