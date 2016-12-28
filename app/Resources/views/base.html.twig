@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"  media="screen">
 </head>
 
-<div id="logo"><a href="{{ path ('mp_cmediatheque_homepage') }}"><img src="../Images/logo.gif" alt="Pleyber-Christ  - Logo"/></a></div>
+<div id="logo"><a href="{{ path ('mpc_homepage') }}"><img src="../Images/logo.gif" alt="Pleyber-Christ  - Logo"/></a></div>
         {% block navbar %}
 
-    <div class="navBarMedia">
-        <div class="navMedia">
+    <div class="navBarHome">
+        <div class="navBar">
             <button class="menuBtn"><span id="menu">Menu</span><i class="fa fa-bars" id ="menuSmall" aria-hidden="true"></i></button>
             <div class="content">
                 <a href="#">Cadre de vie</a>
@@ -27,8 +27,8 @@
         {% block navigation %}
         <h3 class ="navbarTitle">Médiathèque de Pleyber-Christ</h3>
         <div>
-           <a class="itemNavbar" id = "catalog" href="{{ path ('mp_cmediatheque_catalogue') }}" title ="catalogue"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
-           <a class="itemNavbar" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}"title ="nouveautés"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
+           <a class="itemNavbar" id = "navBtn" href="{{ path ('mpc_catalogue') }}" title ="catalogue"><i class="fa fa-book" aria-hidden="true"></i><span id="cata"> Catalogue</span></a>
+           <a class="itemNavbar" id = "navBtn" href="{{ path ('mpc_nouveaute') }}"title ="nouveautés"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
         </div>
         {% endblock %}
         
@@ -48,8 +48,8 @@
                     <li><a class="itemContact" href="#"> Ajouter un ouvrage au catalogue</a></li>
 
                 {% else %}
-                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"> Se connecter</a></li>
-                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"> S'inscrire</a></li>
+                    <li><a class="itemContact" href="{{ path ('mpc_login') }}"> Se connecter</a></li>
+                    <li><a class="itemContact" href="{{ path ('mpc_register') }}"> S'inscrire</a></li>
                     <li><a class="itemContact" href="#">contact/infos</a></li>
                     {%  endif %}
             </div>
@@ -58,7 +58,7 @@
 
 {% endblock %}
 
-<div id="flexBig">
+<div id ="flexHome">
     <div id="leftBlock">
         {% block body %}
         {% endblock %}
@@ -79,8 +79,8 @@
                     <li><a class="itemContact" href="#"><i class="fa fa-plus" aria-hidden="true"></i></i> Ajouter un ouvrage au catalogue</a></li>
 
                 {% else %}
-                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
-                    <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
+                    <li><a class="itemContact" href="{{ path ('mpc_login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Se connecter</a></li>
+                    <li><a class="itemContact" href="{{ path ('mpc_register') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> S'inscrire</a></li>
                     {%  endif %}
             </ul>
         </div>
@@ -126,7 +126,7 @@
 
 {% block footer %}
     <footer>
-        <div id ="footer">Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a>
+        <div>Mairie - Square Anne de Bretagne - 29410 Pleyber-Christ<br/> Tél : 02 98 78 41 67 | Mail : <a href="mailto:pleyber.christ-mairie@wanadoo.fr">pleyber.christ-mairie@wanadoo.fr</a>
         </div>   
     </footer>
 {% endblock %}

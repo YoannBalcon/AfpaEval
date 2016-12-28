@@ -1,55 +1,59 @@
-mp_cmediatheque_auteurs:
-    resource: "@MPCmediathequeBundle/Resources/config/routing/auteurs.xml"
-    prefix:   /auteurs
-    
-mp_cmediatheque_homepage:
-    path:     /
-    defaults: { _controller: MPCmediathequeBundle:Default:index }
-    
-mp_cmediatheque_login:
+mpc_login:
     path:     /login
     defaults: { _controller: MPCmediathequeBundle:Default:login }
 
-mp_cmediatheque_register:
+mpc_register:
     path:     /register
     defaults: { _controller: MPCmediathequeBundle:Default:register }
+    
+#####     Default      #####    
 
-mp_cmediatheque_nouveaute:
+mpc_homepage:
+    path:     /
+    defaults: { _controller: MPCmediathequeBundle:Default:index }
+
+mpc_nouveaute:
     path:     /news
     defaults: { _controller: MPCmediathequeBundle:Default:nouveaute }
     
-mp_cmediatheque_catalogue:
+mpc_catalogue:
     path:    /catalogue/
     defaults: { _controller: MPCmediathequeBundle:Default:catalogue }
     
+#####     Reservation     ##### 
+
 mpc_reservation:
     path:    /reservation
-    defaults: { _controller: MPCmediathequeBundle:Default:reservation }
+    defaults: { _controller: MPCmediathequeBundle:Reservation:reservation }
 
 mpc_listeReservations:
     path:    /listResa
-    defaults: { _controller: MPCmediathequeBundle:Default:listeResa }
+    defaults: { _controller: MPCmediathequeBundle:Reservation:listeResa }
 
 mpc_userListeReservations:
     path:    /userListResa
-    defaults: { _controller: MPCmediathequeBundle:Default:userListResa }
+    defaults: { _controller: MPCmediathequeBundle:Reservation:userListResa }
+    
+#####     Emprunt     #####
 
 mpc_emprunt:
     path:    /emprunt
-    defaults: { _controller: MPCmediathequeBundle:Default:emprunt }
+    defaults: { _controller: MPCmediathequeBundle:Emprunt:emprunt }
 
 mpc_listeEmprunt:
     path:    /listEmprunt
-    defaults: { _controller: MPCmediathequeBundle:Default:listeEmprunt }
+    defaults: { _controller: MPCmediathequeBundle:Emprunt:listeEmprunt }
 
 mpc_userListEmprunt:
     path:    /userListEmprunt
-    defaults: { _controller: MPCmediathequeBundle:Default:userListEmprunt }
-
-mpc_evenements:
-    path:    /evenements
-    defaults: { _controller: MPCmediathequeBundle:Default:showEvents }
+    defaults: { _controller: MPCmediathequeBundle:Emprunt:userListEmprunt }
 
 mpc_retour:
     path:    /retour
-    defaults: { _controller: MPCmediathequeBundle:Default:retour }
+    defaults: { _controller: MPCmediathequeBundle:Emprunt:retour }
+    
+#####     Evenements     #####
+
+mpc_evenements:
+    path:    /evenements
+    defaults: { _controller: MPCmediathequeBundle:Event:showEvents }

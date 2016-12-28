@@ -4,8 +4,8 @@
 {% block navigation %}
     <h3 class ="navbarTitle">Catalogue</h3>
     <div>
-        <a class="itemNavbar" id = "catalog" href="{{ path ('mp_cmediatheque_nouveaute') }}" title ="nouveautés"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
-        <a class="itemNavbar" id="catalog" href="{{ path ('mp_cmediatheque_homepage') }}" title ="accueil"><i class="fa fa-home" aria-hidden="true"></i><span id ="home"> Accueil</span></a>             
+        <a class="itemNavbar" id = "navBtn" href="{{ path ('mpc_nouveaute') }}" title ="nouveautés"><i class="fa fa-plus-square-o" aria-hidden="true"></i><span id ="news"> Nouveautés</span></a>
+        <a class="itemNavbar" id="navBtn" href="{{ path ('mpc_homepage') }}" title ="accueil"><i class="fa fa-home" aria-hidden="true"></i><span id ="home"> Accueil</span></a>             
     </div>
 {% endblock %}
 
@@ -15,10 +15,10 @@
         <div class ="catalogContainer">
             <div class ="catalogFiche">
                 <div id ="catalogPhoto">
-                    <a href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}"> <img class="photoTitre" src="{{ ouvrage.photo }}"height = "190" width ="150"></a>
+                    <a href="{{ path('mpc_catalogue', { 'id': ouvrage.id }) }}"> <img class="photoTitre" src="{{ ouvrage.photo }}"height = "190" width ="150"></a>
                 </div>                        
                 <div class ="catalogInfo">                        
-                    <p><a id="catalogTitle" href="{{ path('mp_cmediatheque_catalogue', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></p>
+                    <p><a id="catalogTitle" href="{{ path('mpc_catalogue', { 'id': ouvrage.id }) }}">{{ ouvrage.titre }} </a></p>
                     <p id ="catalogAuthor"> {{ouvrage.auteur.prenom}} {{ouvrage.auteur.nom}} </p>  
                 </div>
                 <div class ="catalogBtn">

@@ -1,11 +1,39 @@
 /****==>GENERAL STYLE<==****/   
-    #logo{
-        text-align: center;
-    }
     #menuSmall{
         display: none;
     }    
-      .navBarMedia {
+    .smallTitle{
+        display: none;
+        text-align: center;
+        background-color: #868B94;
+    }
+           
+    /*****Index*****/
+
+    #logo{
+        text-align: center;
+    }
+    #flexHome{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    #leftBlock{
+        flex:1;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #rightBlock{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /***** Navbar *****/
+    
+      .navBarHome {
         display: flex;  
         flex-direction: row;
         justify-content: space-between;
@@ -13,12 +41,32 @@
         font-family: verdana;
         background-color: #868B94;
     }
-    .smallTitle{
-        text-align: center;
-        background-color: #868B94;
-        display: none;
+    .navBar {
+        position: relative;
+        display: inline-block;
+    } 
+     .navBar:hover .content {
+        display: block;
     }
-     /*****Bouton menu****/
+    .navBar:hover .menuBtn {
+        color: black;
+        background-color: #FFB700;
+    }
+    #navBtn{        
+        display: inline-block;
+        text-decoration: none;
+        padding: 18px;
+        background-color: #443F3F;
+        color: black;
+        background-color: #FFB700;
+    }   
+    #navBtn:hover {
+        color: #FFB700;
+        background-color: #443F3F;
+    }
+    
+     /***** Bouton menu *****/
+     
     .menuBtn {
         background-color: #443F3F;
         color: #FFB700;
@@ -27,21 +75,6 @@
         border: none;
         cursor: pointer;
     }
-
-    .navMedia {
-        position: relative;
-        display: inline-block;
-    }
-    
-     .navMedia:hover .content {
-        display: block;
-    }
-
-    .navMedia:hover .menuBtn {
-        color: black;
-        background-color: #FFB700;
-    }
-
     .content {
         display: none;
         position: absolute;
@@ -51,19 +84,19 @@
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         font-size: 12px;
     }
-
     .content a {
         color: #FFB700;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
-
     .content a:hover {
         color: black;
         background-color: #FFB700;
     }
+    
     /***Bouton Profil***/
+    
      .profilSmall{
         position: relative;
         display: none;
@@ -73,8 +106,8 @@
     }
     .profilSmall:hover .profilBtn{
         color: black;
-        background-color: #FFB700;    }
-
+        background-color: #FFB700;    
+    }
     .profilBtn{
         background-color: #443F3F;
         color: #FFB700;
@@ -82,8 +115,7 @@
         font-size: 16px;
         border: none;
         cursor: pointer;
-    }
-    
+    }    
     .profilContent{
         display: none;
         position: absolute;
@@ -103,41 +135,8 @@
         color: black;
         background-color: #FFB700;
     } 
-    
-    
-    /***++***/
-    #catalog{        
-        display: inline-block;
-        text-decoration: none;
-        padding: 18px;
-        background-color: #443F3F;
-        color: black;
-        background-color: #FFB700;
-
-    }   
-    #catalog:hover {
-        color: #FFB700;
-        background-color: #443F3F;
-    }
-    #flexBig{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    #leftBlock{
-        flex:1;
-        display:flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
-    #rightBlock{
-        display: flex;
-        flex-direction: column;
-    }
-/***Fiche ouvrage catalogue***/
+ 
+/*****Fiche ouvrage*****/
 
     .catalogContainer{
         display: flex;
@@ -168,7 +167,8 @@
         text-decoration: none;
         background-color: lightgreen;
         color:green;
-    }
+        border-right: none;
+    } 
     #editCatalogue:hover{
         text-decoration: none;
         color: lightgreen;
@@ -185,7 +185,8 @@
         background-color:red;
     }
     
-    /***Bloc Contact***/
+    /*****Bloc Perso*****/
+    
     #blockContact {
         list-style-type: none;
         margin: 0;
@@ -193,26 +194,19 @@
         width: 200px;
         background-color: #f1f1f1;
     }
-
     .itemContact {
         display: block;
         color: #000;
         padding: 8px 16px;
         text-decoration: none;
     }
-
     .itemContact:hover {
         background-color: #555;
         color: #FFB700;
     }
 
-    #editCatalogue{
-        text-decoration: none;
-        float: none;
-        border-right: none;
-    }
-
-    /***bloc Horaires****/
+    /*****bloc Horaires*****/
+    
     .blockHours {    
         margin: 0;
         padding: 0;
@@ -220,26 +214,21 @@
         background-color: #f1f1f1;
     }
 
-
-    /***Bloc Evénements***/
+    /*****Bloc Evénements*****/
+    
     .eventContainer{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
     } 
-    .eventContainer h1{
-    }
-
     .listEvents{
         display: flex; 
         flex-direction: column;        
     }
-
     .eventPhoto{
         margin-left: auto;
         margin-right: auto;
-
     }
     .eventPhoto img{
         max-width: 100%;
@@ -248,8 +237,9 @@
         min-width: 0;
     }
 
-    /***Footer***/
-    #footer{
+    /*****Footer*****/
+    
+    footer{
         text-align: center;
         display: block;
         color : white;
@@ -303,16 +293,22 @@
         display: inline-block;
     }
 }
-
-    /****==>MOBILE STYLE<==****/
-@media screen and (max-width:400px){ 
- 
+    
+    @media screen and (max-width:420px)
+    {
     #cata{
         display: none;
     }
     #news{
         display: none;
     }
+        
+    }
+
+
+    /****==>MOBILE STYLE<==****/
+@media screen and (max-width:400px){ 
+ 
     #home{
         display: none;
     }

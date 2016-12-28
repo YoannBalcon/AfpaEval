@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Mer 21 Décembre 2016 à 17:02
--- Version du serveur :  5.7.16-0ubuntu0.16.04.1
--- Version de PHP :  7.0.8-0ubuntu0.16.04.3
+-- Client :  127.0.0.1
+-- Généré le :  Mer 28 Décembre 2016 à 14:15
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,11 +42,11 @@ INSERT INTO `auteurs` (`id`, `nom`, `prenom`) VALUES
 (3, 'Uderzo', 'Albert'),
 (5, 'Asimov', 'Isaac'),
 (6, 'Lovecraft', 'Howard Philip'),
-(7, 'Metallica', ''),
-(8, 'Daft Punk', ''),
+(7, 'Arleston', 'Charles'),
+(8, 'Peyo', ''),
 (9, 'Hugo', 'Victor'),
-(10, 'Peyo', ''),
-(11, 'Arleston', 'Christophe');
+(10, 'Metallica', ''),
+(11, 'Daft Punk', '');
 
 -- --------------------------------------------------------
 
@@ -64,9 +64,7 @@ CREATE TABLE `bd` (
 --
 
 INSERT INTO `bd` (`id`, `ouvrage_id`) VALUES
-(2, 2),
-(3, 8),
-(4, 9);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -84,9 +82,7 @@ CREATE TABLE `cd` (
 --
 
 INSERT INTO `cd` (`id`, `ouvrage_id`) VALUES
-(6, 1),
-(2, 5),
-(5, 6);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -107,12 +103,7 @@ CREATE TABLE `emprunt` (
 --
 
 INSERT INTO `emprunt` (`id`, `ouvrage_id`, `date_retour`, `date_emprunt`, `utilisateur_id`) VALUES
-(1, 5, '2016-12-28', '2016-12-21', 6),
-(2, 5, '2016-12-28', '2016-12-21', 5),
-(3, 5, '2016-12-28', '2016-12-21', 5),
-(4, 8, '2016-12-28', '2016-12-21', 5),
-(5, 2, '2016-12-28', '2016-12-21', 5),
-(6, 5, '2017-01-04', '2016-12-21', 6);
+(1, 1, '2017-01-09', '2016-12-26', 1);
 
 -- --------------------------------------------------------
 
@@ -124,16 +115,19 @@ CREATE TABLE `evenements` (
   `id` int(11) NOT NULL,
   `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `date` datetime NOT NULL
+  `date` datetime NOT NULL,
+  `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `evenements`
 --
 
-INSERT INTO `evenements` (`id`, `titre`, `description`, `date`) VALUES
-(1, 'Café de noël', 'Lecture de contes de Noël', '2016-12-23 00:00:00'),
-(2, 'contes de la nouvelle année', 'lectures de contes pour les petits', '2017-01-04 00:00:00');
+INSERT INTO `evenements` (`id`, `titre`, `description`, `date`, `photo`) VALUES
+(1, 'Atelier pour les petits', 'L\'atelier des petits revient un mercredi sur deux à partir de janvier!\r\nAu programme : dessin, peinture, arts créatifs.', '2017-01-11 00:00:00', '/Images/atelier.jpg'),
+(2, 'Galette des Rois', 'Venez tirer les rois à la médiathèque!\r\nune part de galette offerte aux adhérents.\r\nUn conteur viendra nous raconter les histoires des plus grands rois.', '2017-02-01 00:00:00', '/Images/galettes_des_rois.jpg'),
+(3, 'Pot du nouvel an', 'Venez célébrer la nouvelle année à Pleyber-Christ en toute convivialité.', '2017-01-06 00:00:00', '/Images/gouter_festif.jpg'),
+(4, 'Metallica en dédicace', 'Evénement exceptionnel!\r\nLe groupe "Metallica" dédicacera leur dernier album "Hardwired...To Self-destruct" à  l\'occasion de leur tournée française.', '2017-02-02 00:00:00', '/Images/metallica.jpg');
 
 -- --------------------------------------------------------
 
@@ -158,9 +152,9 @@ INSERT INTO `genre` (`id`, `nom`) VALUES
 (7, 'roman'),
 (8, 'Science-fiction'),
 (9, 'Horreur'),
-(10, 'Metal'),
-(11, 'Electro'),
-(12, 'Humour');
+(10, 'Humour'),
+(11, 'Metal'),
+(12, 'Electro');
 
 -- --------------------------------------------------------
 
@@ -172,15 +166,6 @@ CREATE TABLE `livre` (
   `id` int(11) NOT NULL,
   `ouvrage_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `livre`
---
-
-INSERT INTO `livre` (`id`, `ouvrage_id`) VALUES
-(1, 3),
-(2, 4),
-(3, 7);
 
 -- --------------------------------------------------------
 
@@ -203,15 +188,15 @@ CREATE TABLE `ouvrage` (
 --
 
 INSERT INTO `ouvrage` (`id`, `titre`, `auteur_id`, `genre_id`, `annee`, `date`, `photo`) VALUES
-(1, 'Thriller', 1, 2, 1982, '2016-10-13', '/Images/Thriller.png'),
-(2, 'Astérix et Cléopatre', 3, 1, 1965, '2016-12-13', '/Images/06fr.jpg'),
-(3, 'Les Robots', 5, 8, 1967, '2016-12-16', '/Images/robots.jpg'),
-(4, 'Le Cauchemar d\'Innsmouth', 6, 9, 1937, '2016-12-13', '/Images/Innsmouth.jpg'),
-(5, 'Kill \'em All', 7, 10, 1983, '2016-12-20', '/Images/killEmAll.jpg'),
-(6, 'Homework', 8, 11, 1997, '2016-12-08', '/Images/Daftpunk-homework.jpg'),
-(7, 'Les Misérables', 9, 7, 1862, '2016-11-18', '/Images/misérables.jpg'),
-(8, 'Les Schtroumpfs Noirs', 10, 12, 1959, '2016-12-20', '/Images/schtroumpfs01_333.jpg'),
-(9, 'L\'ivoire du Magohamot', 11, 1, 1994, '2016-09-14', '/Images/lanfeust.jpg');
+(1, 'Thriller', 1, 2, 1987, '2016-08-13', '/Images/Thriller.png'),
+(2, 'Astérix et Cléopatre', 3, 1, 1968, '2016-11-15', '/Images/06fr.jpg'),
+(3, 'Les Robots', 5, 8, 1967, '2016-09-24', '/Images/robots.jpg'),
+(4, 'Le Cauchemar d\'Innsmouth', 6, 9, 1936, '2016-12-13', '/Images/Innsmouth.jpg'),
+(5, 'Lanfeust de Troy. L\'ivoire du Magohamot', 7, 1, 2011, '2016-12-16', '/Images/lanfeust.jpg'),
+(6, 'Les Schtroumpfs noirs', 8, 10, 1963, '2016-11-09', '/Images/schtroumpfs01_333.jpg'),
+(7, 'Les Misérables', 9, 7, 1862, '2016-10-01', '/Images/miserables.jpg'),
+(8, 'Kill \'em All', 10, 11, 1983, '2016-12-17', '/Images/killEmAll.jpg'),
+(9, 'Homework', 11, 12, 1997, '2016-11-02', '/Images/Daftpunk-homework.jpg');
 
 -- --------------------------------------------------------
 
@@ -231,9 +216,9 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `date`, `ouvrage_id`, `utilisateur_id`) VALUES
-(6, '2016-12-21', 3, 5),
-(8, '2016-12-21', 6, 6),
-(10, '2016-12-21', 4, 6);
+(1, '2016-12-26', 2, 1),
+(2, '2016-12-26', 1, 1),
+(4, '2016-12-26', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -263,8 +248,8 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`) VALUES
-(5, NULL, NULL, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, NULL, '$2y$13$feRkvUxbSVSe8K6zwNDRxukN80n0msDjTM4vGlgbirxtqWzEWaSA2', '2016-12-21 15:54:06', NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}'),
-(6, NULL, NULL, 'user', 'user', 'user@user.com', 'user@user.com', 1, NULL, '$2y$13$zumkm6nJOkWOhDvjuqCfOOn7PdPS53iJhW89Eu8ORBETmC17SUm4m', '2016-12-21 15:31:48', NULL, NULL, 'a:0:{}');
+(1, NULL, NULL, 'user', 'user', 'user@user.com', 'user@user.com', 1, NULL, '$2y$13$7KNPvXH/469mrfZFY3GNdOGL2Que/2kZgBOnemdKSm26Nfw/9r3hu', '2016-12-28 13:37:30', NULL, NULL, 'a:0:{}'),
+(2, NULL, NULL, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, NULL, '$2y$13$P6.UAJnV6ly5E.92XpeldOe4mRbjTzP5OTXx9JPAXo57XjdfQJpZC', '2016-12-28 14:13:28', NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}');
 
 --
 -- Index pour les tables exportées
@@ -355,22 +340,22 @@ ALTER TABLE `auteurs`
 -- AUTO_INCREMENT pour la table `bd`
 --
 ALTER TABLE `bd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `cd`
 --
 ALTER TABLE `cd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `emprunt`
 --
 ALTER TABLE `emprunt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `evenements`
 --
 ALTER TABLE `evenements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `genre`
 --
@@ -380,7 +365,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT pour la table `livre`
 --
 ALTER TABLE `livre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `ouvrage`
 --
@@ -390,12 +375,12 @@ ALTER TABLE `ouvrage`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --
