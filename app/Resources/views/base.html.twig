@@ -50,6 +50,7 @@
                 {% else %}
                     <li><a class="itemContact" href="{{ path ('mp_cmediatheque_login') }}"> Se connecter</a></li>
                     <li><a class="itemContact" href="{{ path ('mp_cmediatheque_register') }}"> S'inscrire</a></li>
+                    <li><a class="itemContact" href="#">contact/infos</a></li>
                     {%  endif %}
             </div>
         </div>
@@ -131,14 +132,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        function navbarOpen() {
-            document.getElementById("HomeNavbar").style.display = "block";
-        }
 
-        function navbarClose() {
-            document.getElementById("HomeNavbar").style.display = "none";
-        }
-    </script>
 {% endblock %}
 </html>

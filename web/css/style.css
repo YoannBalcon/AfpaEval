@@ -102,9 +102,7 @@
     .profilContent a:hover{
         color: black;
         background-color: #FFB700;
-    }
-    
-    
+    } 
     
     
     /***++***/
@@ -124,7 +122,6 @@
     #flexBig{
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap-reverse;
         justify-content: space-between;
         width: 100%;
     }
@@ -223,16 +220,34 @@
         background-color: #f1f1f1;
     }
 
-    /***Bloc Prochains Evénements***/
-    #nextEvents{
-        background-color: lightblue;
+
+    /***Bloc Evénements***/
+    .eventContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+    } 
+    .eventContainer h1{
     }
 
-    /***Bloc Tous les Evénements***/
-    #listEvents{
-        background-color: lightcoral;
+    .listEvents{
+        display: flex; 
+        flex-direction: column;        
     }
-    
+
+    .eventPhoto{
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .eventPhoto img{
+        max-width: 100%;
+        height: auto;
+        min-width: 0;
+        min-width: 0;
+    }
+
     /***Footer***/
     #footer{
         text-align: center;
@@ -242,7 +257,7 @@
     } 
          
     
-    /****==>STYLE FOR TABLETS<==****/
+    /****==> TABLET STYLE<==****/
 @media screen and (max-width:980px){
 
     #menu{
@@ -263,36 +278,35 @@
         width: 200px;
         background-color: #f1f1f1;
     }
-    
+    .eventContainer h1{
+        font-size: 16px;
+    }    
      #footer{
         font-size:12px;
     }
-
 }
     @media screen and (max-width:640px){
-           .navbarTitle{
+    .navbarTitle{
         display:none;
     } 
     .smallTitle{
         display: block;
-    }
-}
-
-@media screen and (max-width:450px){ 
+    }  
     .blockHours {
         display: none;
-    }
-}
-    /****==>MOBILE STYLE<==****/
-
-@media screen and (max-width:400px){ 
-    .profilSmall{
-        display: inline-block;
     }
     
     #blockContact{
         display: none;
     }
+     .profilSmall{
+        display: inline-block;
+    }
+}
+
+    /****==>MOBILE STYLE<==****/
+@media screen and (max-width:400px){ 
+ 
     #cata{
         display: none;
     }

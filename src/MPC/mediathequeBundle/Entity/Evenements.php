@@ -42,7 +42,13 @@ class Evenements
      */
     private $date;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=255)
+     */
+    private $photo;
+    
     /**
      * Get id
      *
@@ -123,6 +129,29 @@ class Evenements
     public function getDate()
     {
         return $this->date;
+    }
+        /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Evenements
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }
 

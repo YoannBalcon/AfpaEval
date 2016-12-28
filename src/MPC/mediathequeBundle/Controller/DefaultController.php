@@ -89,6 +89,7 @@ class DefaultController extends Controller {
         $id_select = $request->get('id');
 
         $date = new \DateTime();
+        
         $today = new \DateTime();
         $delai = new \DateInterval("P14D");
         $retour = $today->add($delai);
@@ -140,7 +141,10 @@ class DefaultController extends Controller {
 
         return $this->render('MPCmediathequeBundle:Default:confirm_retour.html.twig', array('retours' => $emprunts,));
     }
-
+    
+    
+    /*     * Méthodes pour les emprunts* */
+    
     public function EventAction() {
         return $this->render('MPCmediathequeBundle:Default:index.html.twig');
     }
@@ -148,7 +152,7 @@ class DefaultController extends Controller {
     public function showEventsAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $evenements = $em->getRepository('MPCmediathequeBundle:Evenements')->findAll();
+        $evenements = $em->getRepository('MPCmediathequeBundle:Evenements')->findBy([], ['date' => 'ASC']);
 
         return $this->render('MPCmediathequeBundle:Default:evenements.html.twig', array('evenements' => $evenements,));
     }

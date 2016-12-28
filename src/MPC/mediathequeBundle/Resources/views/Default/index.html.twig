@@ -3,14 +3,12 @@
 {% block title %}{{ parent() }} - Médiathèque {% endblock %}
 
 {% block body %}
-    <div id="nextEvents">
-            <h1>Bientôt dans votre médiathèque</h1>
-        <div id="events">
+    <div class="eventContainer">
+        <h1>Les rendez-vous de Pleyber-Christ</h1>
+        <div class="listEvents">
+            <div id ="events"></div>
         </div>
-    </div>
-        <div id="listEvents">
-            <h1>Tous les événements</h1>
-        </div>    
+    </div>    
 {% endblock %}
 
 
